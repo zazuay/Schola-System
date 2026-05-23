@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Application Detail</h1>
+<p>{{ application.user.name }} — {{ application.scholarship.name }} — {{ application.status }}</p>
+<form method="post" action="{% url 'applications:update_status' application.pk %}">
+{% csrf_token %}
+<select name="status"><option value="pending">Pending</option><option value="accepted">Accepted</option><option value="rejected">Rejected</option></select>
+<button type="submit">Update</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>All Applications</h1>
+{% for app in applications %}<p>{{ app.user.name }} → {{ app.scholarship.name }}</p>{% endfor %}
+</body>
+</html>
