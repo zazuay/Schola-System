@@ -227,3 +227,5 @@ media/
 *.egg-info/
 dist/
 .DS_Store
+*.sqlite3
+node_modules/
