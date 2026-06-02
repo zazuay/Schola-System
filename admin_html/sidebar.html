@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schola Admin Sidebar</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+</head>
+<body>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="sidebar-close" id="sidebarClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5897FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </button>
+        </div>
+
+        <div class="sidebar-content">
+            <div class="sidebar-brand-group">
+                <a href="dashboard.html" class="sidebar-logo" id="sidebarLogo">
+                    <img src="../Assets_Sofeng/logo_admin.png" alt="Schola Admin Logo">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="management.html" class="sidebar-link">Scholarship Management</a>
+                <a href="applicantList.html" class="sidebar-link">Applicants</a>
+                <a href="profile.html" class="sidebar-link">Profile</a>
+            </nav>
+        </div>
+
+        <div class="sidebar-footer">
+            <a href="addEdit.html" class="btn-find-scholarships">Create New Scholarship</a>
+        </div>
+    </aside>
+
+    <script>
+    (function () {
+
+        function initSidebarActiveLogic() {
+            const currentPath = window.location.pathname.split("/").pop();
+            const logoElement = document.getElementById("sidebarLogo");
+            const sidebarLinks = document.querySelectorAll(".sidebar-link");
+
+            logoElement.classList.remove("active");
+
+            sidebarLinks.forEach(link => {
+                link.classList.remove("active");
+            });
+
+            if (
+                currentPath === "dashboard.html" ||
+                currentPath === ""
+            ) {
+                logoElement.classList.add("active");
+            }
+
+            sidebarLinks.forEach(link => {
+                const linkHref = link.getAttribute("href");
+
+                if (!linkHref) return;
+
+                const linkFile = linkHref.split("/").pop();
+
+                if (currentPath === linkFile && currentPath !== "") {
+                    link.classList.add("active");
+                    logoElement.classList.remove("active");
+                }
+            });
+        }
+
+        function initSidebarHoverLogic() {
+            const logo = document.getElementById("sidebarLogo");
+            const links = document.querySelectorAll(".sidebar-link");
+
+            links.forEach(link => {
+                link.addEventListener("mouseenter", () => {
+                    if (logo.classList.contains("active")) {
+                        logo.classList.add("hover-hidden");
+                    }
+                });
+
+                link.addEventListener("mouseleave", () => {
+                    logo.classList.remove("hover-hidden");
+                });
+            });
+        }
+
+        function initializeSidebar() {
+            initSidebarActiveLogic();
+            initSidebarHoverLogic();
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", () => {
+                setTimeout(initializeSidebar, 100);
+            });
+        } else {
+            setTimeout(initializeSidebar, 100);
+        }
+
+    })();
+    </script>
+
+</body>
+</html>

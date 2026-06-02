@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schola Admin - Dashboard</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/sidebar.css"> <link rel="stylesheet" href="../admin_css/navbar.css">
+    <link rel="stylesheet" href="../admin_css/dashboard.css">
+    <link rel="stylesheet" href="../css/footer.css">
+</head>
+<body>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="sidebar-close" id="sidebarClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5897FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </button>
+        </div>
+
+        <div class="sidebar-content">
+            <div class="sidebar-brand-group">
+                <a href="dashboard.html" class="sidebar-logo" id="sidebarLogo">
+                    <img src="../Assets_Sofeng/logo_admin.png" alt="Schola Admin Logo">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="management.html" class="sidebar-link">Scholarship Management</a>
+                <a href="applicantList.html" class="sidebar-link">Applicants</a>
+                <a href="profile.html" class="sidebar-link">Profile</a>
+            </nav>
+        </div>
+
+        <div class="sidebar-footer">
+            <a href="addEdit.html" class="btn-find-scholarships">Create New Scholarship</a>
+        </div>
+    </aside>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-left-group">
+                <button class="menu-toggle" id="sidebarToggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <a href="#" class="logo active">
+                    <img src="../Assets_Sofeng/logo_admin.png" alt="Schola Admin Logo">
+                </a>
+                <div class="admin-search-wrapper">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" placeholder="Search applications, students, or awards...">
+                </div>
+            </div>
+            <div class="nav-right">
+                <button class="nav-icon-btn">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+                </button>
+                <button class="nav-icon-btn">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-main-content reveal-load">
+        
+        <div class="dashboard-header-row">
+            <div class="header-titles">
+                <h1>Good Morning, Administrator</h1>
+                <p>Here's what's happening with Schola today.</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn-time-filter btn-pop-interaction">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    Last 30 Days
+                </button>
+                <button class="btn-export-report btn-pop-interaction">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Export Report
+                </button>
+            </div>
+        </div>
+
+        <div class="stats-cards-grid">
+            <div class="stat-card reveal-on-scroll">
+                <div class="stat-card-header">
+                    <span class="stat-icon-box blue-tint"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-blue-primary, #5897FF)" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path></svg></span>
+                    <span class="badge badge-blue">+12%</span>
+                </div>
+                <div class="stat-card-body">
+                    <p class="stat-label">TOTAL SCHOLARSHIPS</p>
+                    <h3 class="stat-value">124</h3>
+                </div>
+            </div>
+            <div class="stat-card reveal-on-scroll">
+                <div class="stat-card-header">
+                    <span class="stat-icon-box blue-dark-tint"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-navy, #2F3A55)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></span>
+                    <span class="badge badge-navy">+5.4%</span>
+                </div>
+                <div class="stat-card-body">
+                    <p class="stat-label">TOTAL APPLICANTS</p>
+                    <h3 class="stat-value">8,432</h3>
+                </div>
+            </div>
+            <div class="stat-card reveal-on-scroll">
+                <div class="stat-card-header">
+                    <span class="stat-icon-box blue-tint"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-blue-primary, #5897FF)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg></span>
+                    <span class="badge badge-blue">Action Needed</span>
+                </div>
+                <div class="stat-card-body">
+                    <p class="stat-label">PENDING REVIEWS</p>
+                    <h3 class="stat-value">47</h3>
+                </div>
+            </div>
+            <div class="stat-card reveal-on-scroll">
+                <div class="stat-card-header">
+                    <span class="stat-icon-box blue-dark-tint"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-navy, #2F3A55)" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2"></circle></svg></span>
+                    <span class="badge badge-navy">Target: 90%</span>
+                </div>
+                <div class="stat-card-body">
+                    <p class="stat-label">FUNDS DISBURSED</p>
+                    <h3 class="stat-value">Rp2.4B</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="split-layout-grid-row">
+            <div class="content-card reveal-on-scroll">
+                <div class="card-title-container">
+                    <div>
+                        <h2 class="card-main-title">Application Trends</h2>
+                        <p class="card-subtitle-desc">Monthly submission volume for 2026</p>
+                    </div>
+                    <div class="chart-legends">
+                        <span class="legend-dot dark-navy"></span> Submission
+                        <span class="legend-dot pastel-blue"></span> Completion
+                    </div>
+                </div>
+                <div class="mock-chart-container">
+                    <div class="chart-bar-column"><div class="bar-group"><div class="bar-fill submission" style="height: 40%;"></div><div class="bar-fill completion" style="height: 25%;"></div></div><span>JAN</span></div>
+                    <div class="chart-bar-column"><div class="bar-group"><div class="bar-fill submission" style="height: 55%;"></div><div class="bar-fill completion" style="height: 35%;"></div></div><span>FEB</span></div>
+                    <div class="chart-bar-column"><div class="bar-group"><div class="bar-fill submission" style="height: 70%;"></div><div class="bar-fill completion" style="height: 50%;"></div></div><span>MAR</span></div>
+                    <div class="chart-bar-column"><div class="bar-group"><div class="bar-fill submission" style="height: 65%;"></div><div class="bar-fill completion" style="height: 58%;"></div></div><span>APR</span></div>
+                    <div class="chart-bar-column"><div class="bar-group"><div class="bar-fill submission" style="height: 85%;"></div><div class="bar-fill completion" style="height: 65%;"></div></div><span>MAY</span></div>
+                    <div class="chart-bar-column"><div class="bar-group"><div class="bar-fill submission" style="height: 80%;"></div><div class="bar-fill completion" style="height: 72%;"></div></div><span>JUN</span></div>
+                    <div class="chart-bar-column"><div class="bar-group"><div class="bar-fill submission" style="height: 45%;"></div><div class="bar-fill completion" style="height: 30%;"></div></div><span>JUL</span></div>
+                    <div class="chart-bar-column"><div class="bar-group"><div class="bar-fill submission" style="height: 35%;"></div><div class="bar-fill completion" style="height: 20%;"></div></div><span>AUG</span></div>
+                </div>
+            </div>
+
+            <div class="side-stack-layout">
+                <div class="content-card status-health-card reveal-on-scroll">
+                    <h2 class="card-main-title inline-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg> System Health</h2>
+                    <div class="health-stat-row">
+                        <span class="health-label">Cloud Storage</span>
+                        <span class="health-percentage">84%</span>
+                    </div>
+                    <div class="progress-bar-track"><div class="progress-bar-fill" style="width: 84%;"></div></div>
+                    <div class="portal-status-badge-row">
+                        <span class="portal-text-lbl">Portal Status</span>
+                        <span class="status-indicator-tag"><span class="dot-blue"></span> Operational</span>
+                    </div>
+                </div>
+                <div class="content-card quick-actions-card reveal-on-scroll">
+                    <h2 class="card-main-title">Quick Actions</h2>
+                    <div class="actions-buttons-vertical-stack">
+                        <button class="btn-side-action btn-pop-interaction"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg> Create Scholarship</button>
+                        <button class="btn-side-action btn-pop-interaction"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg> Review Applicants</button>
+                        <button class="btn-side-action btn-pop-interaction"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg> Export CSV</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="split-layout-grid-row attention-activity-row">
+            
+            <div class="attention-blue-card reveal-on-scroll">
+                <div class="attention-header-container">
+                    <h2 class="attention-title">Requires Attention</h2>
+                    <p class="attention-subtitle">Urgent operational elements pending execution</p>
+                </div>
+                <div class="attention-grid-dashboard">
+                    <div class="attention-grid-item">
+                        <span class="attention-icon-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg></span>
+                        <div class="attention-meta-item">
+                            <h3>47 Files</h3>
+                            <p>Waiting review</p>
+                        </div>
+                    </div>
+                    <div class="attention-grid-item">
+                        <span class="attention-icon-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line></svg></span>
+                        <div class="attention-meta-item">
+                            <h3>5 Incomplete</h3>
+                            <p>Student documents</p>
+                        </div>
+                    </div>
+                    <div class="attention-grid-item">
+                        <span class="attention-icon-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect></svg></span>
+                        <div class="attention-meta-item">
+                            <h3>2 Pool Links</h3>
+                            <p>Expiring soon</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-attention-action btn-pop-interaction">Review Now &rarr;</button>
+            </div>
+
+            <div class="content-card reveal-on-scroll">
+                <div class="card-title-container">
+                    <h2 class="card-main-title">Recent Activity</h2>
+                    <a href="#" class="view-all-link">View All</a>
+                </div>
+                <div class="activity-timeline-list">
+                    <div class="activity-item hover-item-interaction">
+                        <div class="user-avatar-circle">MC</div>
+                        <div class="activity-details">
+                            <p class="activity-text"><strong>Marcus Chen</strong> submitted an application for <strong>Global Innovators 2024</strong>.</p>
+                            <span class="activity-timestamp">2 minutes ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item hover-item-interaction">
+                        <div class="user-avatar-circle approve-icon-box"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-blue-primary, #5897FF)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                        <div class="activity-details">
+                            <p class="activity-text">Scholarship Approved: <strong>STEM Women in Tech Fund</strong> has been finalized.</p>
+                            <span class="activity-timestamp">1 hour ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item hover-item-interaction">
+                        <div class="user-avatar-circle">SJ</div>
+                        <div class="activity-details">
+                            <p class="activity-text"><strong>Sarah Jenkins</strong> updated her transcript for the <strong>Leadership Excellence Award</strong>.</p>
+                            <span class="activity-timestamp">3 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card table-section-card reveal-on-scroll">
+            <div class="card-title-container">
+                <h2 class="card-main-title">Top Active Scholarships</h2>
+                <a href="#" class="view-all-link">View All</a>
+            </div>
+            <div class="responsive-table-wrapper">
+                <table class="admin-data-table">
+                    <thead>
+                        <tr>
+                            <th>SCHOLARSHIP NAME</th>
+                            <th>STATUS</th>
+                            <th>APPLICANTS</th>
+                            <th>DEADLINE</th>
+                            <th style="text-align: center;">ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><div class="cell-with-icon"><span class="table-row-icon">A</span><strong>STEM Excellence Grant 2026</strong></div></td>
+                            <td><span class="table-tag tag-open">OPEN</span></td>
+                            <td>1,240</td>
+                            <td>Oct 15, 2026</td>
+                            <td style="text-align: center;"><button class="btn-table-action">&vellip;</button></td>
+                        </tr>
+                        <tr>
+                            <td><div class="cell-with-icon"><span class="table-row-icon navy-icon-tint">C</span><strong>Creative Arts Leadership Fund</strong></div></td>
+                            <td><span class="table-tag tag-open">OPEN</span></td>
+                            <td>856</td>
+                            <td>Nov 02, 2026</td>
+                            <td style="text-align: center;"><button class="btn-table-action">&vellip;</button></td>
+                        </tr>
+                        <tr>
+                            <td><div class="cell-with-icon"><span class="table-row-icon blue-light-tint">G</span><strong>Global Citizenship Initiative</strong></div></td>
+                            <td><span class="table-tag tag-reviewing">REVIEWING</span></td>
+                            <td>3,102</td>
+                            <td><span class="expired-text">Expired</span></td>
+                            <td style="text-align: center;"><button class="btn-table-action">&vellip;</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="split-layout-grid-row footer-split-blocks">
+            <div class="content-card reveal-on-scroll">
+                <h2 class="card-main-title" style="margin-bottom: 24px;">Upcoming Deadlines</h2>
+                <div class="deadlines-list-container">
+                    <div class="deadline-schedule-row hover-card-interaction">
+                        <div class="date-badge-box">
+                            <span class="month">OCT</span>
+                            <span class="day">24</span>
+                        </div>
+                        <div class="deadline-schedule-details">
+                            <h3>Board Review Meeting</h3>
+                            <p>Reviewing Q4 STEM candidates &bull; 2:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="deadline-schedule-row hover-card-interaction">
+                        <div class="date-badge-box">
+                            <span class="month">OCT</span>
+                            <span class="day">28</span>
+                        </div>
+                        <div class="deadline-schedule-details">
+                            <h3>Grant Disbursement Deadline</h3>
+                            <p>Finalizing payments for Fall semester</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card mascot-wizard-blue-card reveal-on-scroll">
+                <div class="wizard-flex-layout">
+                    <div class="wizard-mascot-illustration">
+                        <img src="../Assets_Sofeng/admin_dashboard_mascot.png" alt="Schola Wizard Owl Mascot">
+                    </div>
+                    <div class="wizard-text-details">
+                        <h2>Ready for a new session?</h2>
+                        <p>Launch the wizard to start setting up next year's scholarship pool.</p>
+                        <button class="btn-launch-setup btn-pop-interaction">Launch Setup Wizard</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> 
+    
+    <footer class="footer" style="width: 100vw; background-color: #FFFFFF; border-top: 1px solid #E2E8F0; position: relative; margin-top: 80px; left: 50%; transform: translateX(-50%); box-sizing: border-box;">
+        <div class="footer-container" style="max-width: var(--container-max-width, 1200px); margin: 0 auto; padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; width: 100%;">
+            <div class="footer-left">
+                <span class="copyright" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B;">© 2026 Schola Scholarship Management. Empowering academic excellence.</span>
+            </div>
+            <div class="footer-right" style="display: flex; gap: 24px;">
+                <a href="#" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Privacy Policy</a>
+                <a href="#" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Terms of Service</a>
+                <a href="#" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Contact Support</a>
+                <a href="#" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Accessibility</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Core Reveal Engine
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal-load').forEach(el => {
+                el.classList.add('revealed');
+            });
+        });
+
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, { root: null, threshold: 0.05 });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => scrollObserver.observe(el));
+
+        // 2. Integrated Sidebar Engine (Logic & Toggle Triggering)
+        (function () {
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("sidebarOverlay");
+            const toggleBtn = document.getElementById("sidebarToggle");
+            const closeBtn = document.getElementById("sidebarClose");
+
+            // Open/Close sliding interaction with blur effects
+            function toggleSidebar() {
+                sidebar.classList.add("sidebar-moving");
+                sidebar.classList.toggle("active");
+                overlay.classList.toggle("active");
+
+                setTimeout(() => {
+                    sidebar.classList.remove("sidebar-moving");
+                }, 600);
+            }
+
+            if (toggleBtn) toggleBtn.addEventListener("click", toggleSidebar);
+            if (closeBtn) closeBtn.addEventListener("click", toggleSidebar);
+            if (overlay) overlay.addEventListener("click", toggleSidebar);
+
+            // Menu dynamic path checker & highlights
+            function initSidebarActiveLogic() {
+                const currentPath = window.location.pathname.split("/").pop();
+                const logoElement = document.getElementById("sidebarLogo");
+                const sidebarLinks = document.querySelectorAll(".sidebar-link");
+
+                if (logoElement) logoElement.classList.remove("active");
+                sidebarLinks.forEach(link => link.classList.remove("active"));
+
+                if (currentPath === "dashboard.html" || currentPath === "") {
+                    if (logoElement) logoElement.classList.add("active");
+                }
+
+                sidebarLinks.forEach(link => {
+                    const linkHref = link.getAttribute("href");
+                    if (!linkHref) return;
+                    const linkFile = linkHref.split("/").pop();
+
+                    if (currentPath === linkFile && currentPath !== "") {
+                        link.classList.add("active");
+                        if (logoElement) logoElement.classList.remove("active");
+                    }
+                });
+            }
+
+            // Exclusive underline hiding hover engine
+            function initSidebarHoverLogic() {
+                const logo = document.getElementById("sidebarLogo");
+                const links = document.querySelectorAll(".sidebar-link");
+
+                if (!logo) return;
+
+                links.forEach(link => {
+                    link.addEventListener("mouseenter", () => {
+                        if (logo.classList.contains("active")) {
+                            logo.classList.add("hover-hidden");
+                        }
+                    });
+                    link.addEventListener("mouseleave", () => {
+                        logo.classList.remove("hover-hidden");
+                    });
+                });
+            }
+
+            function initializeSidebar() {
+                initSidebarActiveLogic();
+                initSidebarHoverLogic();
+            }
+
+            setTimeout(initializeSidebar, 100);
+        })();
+    </script>
+</body>
+</html>
