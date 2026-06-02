@@ -1,0 +1,44 @@
+:root {
+    --color-navy: #2F3A55;
+    --color-blue-primary: #5897FF;
+    --color-sky-blue: #E0ECFF;
+    
+    --color-bg-navbar: #F4FDFF;
+    --color-bg-card: #FFFFFF;
+    
+    --bg-page-gradient: linear-gradient(180deg, #5695FF 0%, #80B5FD 19%, #FFFFFF 100%);
+
+    --color-text-black: #121214;
+    --color-text-nav-no-hover: #64748B;
+    --color-text-light: #FFFFFF;
+
+    --color-status-pending-bg: #E0ECFF;
+    --color-status-pending-text: #2F3A55;
+    --color-status-accepted-bg: #DCFCE7;
+
+    --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+
+    --font-size-judul: 3rem;
+    --font-size-sub-judul: 2rem;
+    --font-size-normal: 1rem;
+    --font-size-keterangan: 0.875rem;
+    --font-size-tag: 0.75rem;
+
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 32px;
+    --radius-full: 9999px;
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    
+    --container-max-width: 1200px;
+    --transition-fast: 0.2s ease;
+}

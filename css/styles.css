@@ -1,0 +1,84 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--bg-page-gradient);
+    color: var(--color-text-black);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-navy);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-fast);
+}
+
+button {
+    font-family: var(--font-main);
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.btn-detail {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 111.36px;
+    height: 40px;
+    padding: 12px 24px;
+    background-color: var(--color-navy);
+    color: var(--color-text-light);
+    font-size: var(--font-size-keterangan);
+    font-weight: var(--font-weight-semibold);
+    border-radius: 25px;
+    text-align: center;
+}
+
+.btn-detail:hover {
+    opacity: 0.9;
+}
+
+.card-scholarship {
+    width: 432.33px;
+    height: 326.19px;
+    background-color: var(--color-bg-card);
+    border-radius: 25px;
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-fast);
+}
+
+.card-scholarship:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
