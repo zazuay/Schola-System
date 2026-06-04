@@ -1,0 +1,230 @@
+.navbar {
+    width: 100%;
+    height: 80px;
+    background-color: var(--color-bg-navbar);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar-container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left-group {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+}
+
+.menu-toggle:hover {
+    background-color: rgba(47, 58, 85, 0.05);
+}
+
+.menu-toggle .bar {
+    width: 20px;
+    height: 2px;
+    background-color: var(--color-navy);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    position: relative;
+}
+
+.logo img {
+    height: 25px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-navy);
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover::after {
+    transform: scaleX(1);
+}
+
+.nav-left-group:has(.logo:hover) .nav-link::after {
+    transform: scaleX(0) !important;
+}
+
+.nav-center {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-link {
+    font-size: var(--font-size-normal);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-nav-no-hover);
+    padding: 8px 0;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-navy);
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* DEFAULT ACTIVE = LOGO */
+.logo.active::after {
+    transform: scaleX(1);
+}
+
+/* ketika hover nav menu, underline logo hilang */
+.nav-left-group:has(.nav-center:hover) .logo::after {
+    transform: scaleX(0) !important;
+}
+
+/* underline muncul saat hover item */
+.nav-center .nav-link:hover::after {
+    transform: scaleX(1) !important;
+}
+
+/* warna saat hover */
+.nav-center .nav-link:hover {
+    color: var(--color-navy);
+}
+
+.nav-center:hover .nav-link::after {
+    transform: scaleX(0) !important;
+}
+
+.nav-center .nav-link:hover {
+    color: var(--color-navy);
+}
+
+.nav-center .nav-link:hover::after {
+    transform: scaleX(1) !important;
+}
+
+.nav-link.active {
+    color: var(--color-navy);
+}
+
+.nav-link.active::after {
+    transform: scaleX(1) !important;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-icon-btn {
+    color: var(--color-navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+}
+
+.nav-icon-btn:hover {
+    background-color: rgba(47, 58, 85, 0.05);
+}
+
+@media (max-width: 768px) {
+    .nav-left-group {
+        gap: 20px;
+    }
+
+    .nav-center {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-bg-navbar);
+        flex-direction: column;
+        padding: 24px;
+        gap: 16px;
+        box-shadow: var(--shadow-md);
+    }
+
+    .nav-center.active {
+        display: flex;
+    }
+
+    .nav-center:hover .nav-link::after {
+        display: none !important;
+    }
+
+    .nav-link::after {
+        display: none !important;
+    }
+    
+    .logo::after {
+        display: none !important;
+    }
+
+    .nav-left-group:has(.logo:hover) .nav-link::after {
+        display: none !important;
+    }
+}
+
+.logo {
+    position: relative;
+    display: inline-block;
+}
+.logo::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-navy);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+.logo:hover::after {
+    transform: scaleX(1);
+}
+
+

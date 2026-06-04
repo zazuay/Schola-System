@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schola Admin - Scholarship Management</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/sidebar.css"> <link rel="stylesheet" href="../admin_css/navbar.css">
+    <link rel="stylesheet" href="../admin_css/management.css">
+    <link rel="stylesheet" href="../css/footer.css">
+</head>
+<body>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="sidebar-close" id="sidebarClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5897FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </button>
+        </div>
+
+        <div class="sidebar-content">
+            <div class="sidebar-brand-group">
+                <a href="dashboard.html" class="sidebar-logo" id="sidebarLogo">
+                    <img src="../Assets_Sofeng/logo_admin.png" alt="Schola Admin Logo">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="management.html" class="sidebar-link">Scholarship Management</a>
+                <a href="applicantList.html" class="sidebar-link">Applicants</a>
+                <a href="profile.html" class="sidebar-link">Profile</a>
+            </nav>
+        </div>
+
+        <div class="sidebar-footer">
+            <a href="addEdit.html" class="btn-find-scholarships">Create New Scholarship</a>
+        </div>
+    </aside>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-left-group">
+                <button class="menu-toggle" id="sidebarToggle">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </button>
+                <a href="dashboard.html" class="logo active">
+                    <img src="../Assets_Sofeng/logo_admin.png" alt="Schola Admin Logo">
+                </a>
+                <div class="admin-search-wrapper">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" placeholder="Search applications, students, or awards...">
+                </div>
+            </div>
+            <div class="nav-right">
+                <button class="nav-icon-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></button>
+                <button class="nav-icon-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="management-main-content reveal-load">
+        
+        <div class="mgt-header-row">
+            <div class="header-titles">
+                <h1>Scholarship Management</h1>
+                <p>Oversee academic programs and manage recipient criteria.</p>
+            </div>
+            <button class="btn-add-scholarship btn-pop-interaction" onclick="window.location.href='addEdit.html'">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Add New Scholarship
+            </button>
+        </div>
+
+        <div class="mgt-stats-grid">
+            <div class="mgt-stat-card reveal-on-scroll">
+                <div class="stat-inner">
+                    <span class="stat-badge-float">+2 this month</span>
+                    <p class="stat-label">Open Programs</p>
+                    <h2 class="stat-value">12</h2>
+                </div>
+            </div>
+            <div class="mgt-stat-card reveal-on-scroll">
+                <div class="stat-inner">
+                    <p class="stat-label">Closing Soon</p>
+                    <h2 class="stat-value">4</h2>
+                </div>
+            </div>
+            <div class="mgt-stat-card reveal-on-scroll">
+                <div class="stat-inner">
+                    <p class="stat-label">Expired Programs</p>
+                    <h2 class="stat-value">3</h2>
+                </div>
+            </div>
+            <div class="mgt-stat-card reveal-on-scroll">
+                <div class="stat-inner">
+                    <p class="stat-label">Draft Programs</p>
+                    <h2 class="stat-value">2</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="mgt-content-card reveal-on-scroll">
+            <div class="card-table-header">
+                <h2 class="card-main-title">All Scholarships</h2>
+                <div class="table-tools">
+                    <button class="tool-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="12" x2="15" y2="12"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg></button>
+                    <button class="tool-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></button>
+                </div>
+            </div>
+
+            <div class="responsive-table-wrapper">
+                <table class="mgt-data-table">
+                    <thead>
+                        <tr>
+                            <th>SCHOLARSHIP NAME</th>
+                            <th>STATUS</th>
+                            <th>APPLICANTS</th>
+                            <th>DEADLINE</th>
+                            <th style="text-align: center;">ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="hover-row-interaction">
+                            <td><div class="cell-mgt"><span class="icon-sq">A</span><strong>STEM Excellence Grant 2026</strong></div></td>
+                            <td><span class="mgt-tag tag-open">OPEN</span></td>
+                            <td>1,240</td>
+                            <td>Oct 15, 2026</td>
+                            <td style="text-align: center;"><button class="btn-dots">&vellip;</button></td>
+                        </tr>
+                        <tr class="hover-row-interaction">
+                            <td><div class="cell-mgt"><span class="icon-sq navy-sq">C</span><strong>Creative Arts Leadership Fund</strong></div></td>
+                            <td><span class="mgt-tag tag-open">OPEN</span></td>
+                            <td>856</td>
+                            <td>Nov 02, 2026</td>
+                            <td style="text-align: center;"><button class="btn-dots">&vellip;</button></td>
+                        </tr>
+                        <tr class="hover-row-interaction">
+                            <td><div class="cell-mgt"><span class="icon-sq blue-sq">G</span><strong>Global Citizenship Initiative</strong></div></td>
+                            <td><span class="mgt-tag tag-reviewing">REVIEWING</span></td>
+                            <td>3,102</td>
+                            <td><span class="exp-text">Expired</span></td>
+                            <td style="text-align: center;"><button class="btn-dots">&vellip;</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-footer-info">
+                <span>Showing <strong>4</strong> of 124 scholarships</span>
+                <div class="pagination-arrows">
+                    <button class="btn-page">&lsaquo;</button>
+                    <button class="btn-page">&rsaquo;</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mgt-bottom-split-row">
+            <div class="mgt-content-card reveal-on-scroll">
+                <h2 class="card-main-title inline-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg> Quick Insights</h2>
+                
+                <div class="insight-item-row">
+                    <div class="insight-label-group">
+                        <span class="ins-label">Most Applied</span>
+                        <span class="ins-value">STEM Excellence</span>
+                    </div>
+                    <p class="ins-subtext">1,240 applicants this cycle</p>
+                </div>
+
+                <div class="insight-progress-section">
+                    <div class="progress-info">
+                        <span>Review Progress</span>
+                        <strong>82% Complete</strong>
+                    </div>
+                    <div class="ins-progress-track"><div class="ins-progress-fill" style="width: 82%;"></div></div>
+                    <p class="ins-subtext">2,541 / 3,102 pending review</p>
+                </div>
+
+                <div class="insight-footer-stats">
+                    <div class="ins-footer-box">
+                        <p>UPCOMING DEADLINES</p>
+                        <h3>4</h3>
+                    </div>
+                    <div class="ins-footer-box">
+                        <p>ACTIVE APPLICANTS</p>
+                        <h3>5.2K</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mgt-content-card report-gradient-card reveal-on-scroll">
+                <div class="report-flex">
+                    <div class="report-text">
+                        <h2>Institutional Report</h2>
+                        <p>Export annual summary for the board of trustees.</p>
+                        <button class="btn-download btn-pop-interaction">Download PDF</button>
+                    </div>
+                    <div class="report-visual">
+                        <img src="../Assets_Sofeng/admin_management.png" alt="Management Visual">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer" style="width: 100vw; background-color: #FFFFFF; border-top: 1px solid #E2E8F0; position: relative; margin-top: 80px; left: 50%; transform: translateX(-50%); box-sizing: border-box;">
+        <div class="footer-container" style="max-width: var(--container-max-width, 1200px); margin: 0 auto; padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; width: 100%;">
+            <div class="footer-left">
+                <span class="copyright" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B;">© 2026 Schola Scholarship Management. Empowering academic excellence.</span>
+            </div>
+            <div class="footer-right" style="display: flex; gap: 24px;">
+                <a href="#" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Privacy Policy</a>
+                <a href="#" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Terms of Service</a>
+                <a href="#" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Contact Support</a>
+                <a href="#" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Accessibility</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Reveal Animations Logic
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal-load').forEach(el => el.classList.add('revealed'));
+        });
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('revealed'); });
+        }, { threshold: 0.05 });
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => scrollObserver.observe(el));
+
+        // 2. Sidebar Core Interaction Logic
+        (function () {
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("sidebarOverlay");
+            const toggleBtn = document.getElementById("sidebarToggle");
+            const closeBtn = document.getElementById("sidebarClose");
+
+            function toggleSidebar() {
+                sidebar.classList.add("sidebar-moving");
+                sidebar.classList.toggle("active");
+                overlay.classList.toggle("active");
+
+                setTimeout(() => {
+                    sidebar.classList.remove("sidebar-moving");
+                }, 600);
+            }
+
+            if (toggleBtn) toggleBtn.addEventListener("click", toggleSidebar);
+            if (closeBtn) closeBtn.addEventListener("click", toggleSidebar);
+            if (overlay) overlay.addEventListener("click", toggleSidebar);
+
+            // Active Path Underline Engine
+            function initSidebarActiveLogic() {
+                const currentPath = window.location.pathname.split("/").pop();
+                const logoElement = document.getElementById("sidebarLogo");
+                const sidebarLinks = document.querySelectorAll(".sidebar-link");
+
+                if (logoElement) logoElement.classList.remove("active");
+                sidebarLinks.forEach(link => link.classList.remove("active"));
+
+                if (currentPath === "dashboard.html" || currentPath === "") {
+                    if (logoElement) logoElement.classList.add("active");
+                }
+
+                sidebarLinks.forEach(link => {
+                    const linkHref = link.getAttribute("href");
+                    if (!linkHref) return;
+                    const linkFile = linkHref.split("/").pop();
+
+                    if (currentPath === linkFile && currentPath !== "") {
+                        link.classList.add("active");
+                        if (logoElement) logoElement.classList.remove("active");
+                    }
+                });
+            }
+
+            // Cross Hover Hidden Indicator Engine
+            function initSidebarHoverLogic() {
+                const logo = document.getElementById("sidebarLogo");
+                const links = document.querySelectorAll(".sidebar-link");
+
+                if (!logo) return;
+
+                links.forEach(link => {
+                    link.addEventListener("mouseenter", () => {
+                        if (logo.classList.contains("active")) {
+                            logo.classList.add("hover-hidden");
+                        }
+                    });
+                    link.addEventListener("mouseleave", () => {
+                        logo.classList.remove("hover-hidden");
+                    });
+                });
+            }
+
+            function initializeSidebar() {
+                initSidebarActiveLogic();
+                initSidebarHoverLogic();
+            }
+
+            setTimeout(initializeSidebar, 100);
+        })();
+    </script>
+</body>
+</html>

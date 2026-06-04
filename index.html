@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schola - Empower Your Academic Journey</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/dashboard1.css">
+    <link rel="stylesheet" href="css/footer.css">                                                                               
+</head>
+
+<body>
+
+    <div id="sidebar-placeholder"></div>
+    <div id="navbar-placeholder"></div>
+
+    <section class="hero-section reveal-load">
+        <div class="hero-bg" style="background-image: url('Assets_Sofeng/dashboard_hero.jpg');"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-container reveal-load">
+            <h1 class="hero-title">Empower Your Academic Journey</h1>
+            <p class="hero-desc">Discover curated scholarships tailored to your ambitions. We bridge the gap between financial constraints and educational dreams.</p>
+            <div class="hero-cta-group">
+                <a href="#recommended-section" class="btn-explore">Explore Opportunities</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="filter-section reveal-on-scroll">
+        <div class="filter-container">
+            <div class="search-box-wrapper">
+                <span class="search-title">Search Scholarships</span>
+                <div class="search-input-group">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" placeholder="e.g. STEM, Arts">
+                </div>
+            </div>
+            <div class="filter-selectors-grid">
+                <div class="selector-item">
+                    <span class="selector-label">Deadline</span>
+                    <select>
+                        <option>4 July, 2026</option>
+                        <option>15 August, 2026</option>
+                        <option>30 September, 2026</option>
+                        <option>1 December, 2026</option>
+                    </select>
+                </div>
+                <div class="selector-item">
+                    <span class="selector-label">Academic Level</span>
+                    <select>
+                        <option>All Levels</option>
+                        <option>Undergraduate</option>
+                        <option>Master Degree</option>
+                        <option>Doctoral Degree</option>
+                        <option>Exchange Program</option>
+                    </select>
+                </div>
+                <div class="selector-item">
+                    <span class="selector-label">Country</span>
+                    <select>
+                        <option>All Countries</option>
+                        <option>United States</option>
+                        <option>Germany</option>
+                        <option>Canada</option>
+                        <option>Australia</option>
+                        <option>France</option>
+                        <option>Japan</option>
+                    </select>
+                </div>
+                <button class="btn-apply-filter">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+                    Apply Filters
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <main class="container dashboard-main">
+
+        <section id="recommended-section" class="section-block reveal-on-scroll">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Recommended for You</h2>
+                    <p class="section-subtitle">Based on your academic profile and interests</p>
+                </div>
+                <a href="#recommended-section" class="btn-view-all">View all opportunities →</a>
+            </div>
+   
+
+
+            <div class="scholarship-grid">
+                <div class="card-scholarship">
+                    <div class="card-top-row">
+                        <span class="tag-category">EDUCATION</span>
+                        <button class="btn-bookmark bookmark-toggle">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                        </button>
+                    </div>
+                    <h3 class="card-title">International Excellence Grant</h3>
+                    <div class="card-meta-group">
+                        <span class="meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            Germany
+                        </span>
+                        <span class="meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            Oct 15, 2026
+                        </span>
+                    </div>
+                    <p class="card-desc">A prestigious scholarship for high-achieving international students...</p>
+                    <div class="card-footer-row">
+                        <span class="card-amount">Up to Rp5.000.000 / Year</span>
+                        <a href="components/detail1.html" class="btn-detail">View Detail</a>
+                    </div>
+                </div>
+
+                <div class="card-scholarship">
+                    <div class="card-top-row">
+                        <span class="tag-category">STEM</span>
+                        <button class="btn-bookmark bookmark-toggle">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                        </button>
+                    </div>
+                    <h3 class="card-title">STEM Innovation Award</h3>
+                    <div class="card-meta-group">
+                        <span class="meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            United States
+                        </span>
+                        <span class="meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            Nov 30, 2026
+                        </span>
+                    </div>
+                    <p class="card-desc">Supporting the next generation of engineers and scientists at top US...</p>
+                    <div class="card-footer-row">
+                        <span class="card-amount">Rp40.000.000 / Year</span>
+                        <a href="components/detail2.html" class="btn-detail">View Detail</a>
+                    </div>
+                </div>
+
+                <div class="card-scholarship">
+                    <div class="card-top-row">
+                        <span class="tag-category">LEADERSHIP</span>
+                        <button class="btn-bookmark bookmark-toggle">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                        </button>
+                    </div>
+                    <h3 class="card-title">Maple Leaf Academic Fund</h3>
+                    <div class="card-meta-group">
+                        <span class="meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            Canada
+                        </span>
+                        <span class="meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            Dec 05, 2026
+                        </span>
+                    </div>
+                    <p class="card-desc">Designed for students exhibiting exceptional leadership potential in...</p>
+                    <div class="card-footer-row">
+                        <span class="card-amount">Full Tuition</span>
+                        <a href="components/detail3.html" class="btn-detail">View Detail</a>
+                    </div>
+                </div>
+
+                <div class="card-scholarship">
+                    <div class="card-top-row">
+                        <span class="tag-category">HUMANITIES</span>
+                        <button class="btn-bookmark bookmark-toggle">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                        </button>
+                    </div>
+                    <h3 class="card-title">Global Ethics Scholarship</h3>
+                    <div class="card-meta-group">
+                        <span class="meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            United Kingdom
+                        </span>
+                        <span class="meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            Jan 12, 2027
+                        </span>
+                    </div>
+                    <p class="card-desc">A unique opportunity for philosophy and sociology students to engage...</p>
+                    <div class="card-footer-row">
+                        <span class="card-amount">Rp20.000.000 / Stipend</span>
+                        <a href="components/detail4.html" class="btn-detail">View Detail</a>
+                    </div>
+                </div>
+
+                <div class="card-scholarship">
+                    <div class="card-top-row">
+                        <span class="tag-category">ARTS</span>
+                        <button class="btn-bookmark bookmark-toggle">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                        </button>
+                    </div>
+                    <h3 class="card-title">Digital Arts Visionary Grant</h3>
+                    <div class="card-meta-group">
+                        <span class="meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            France
+                        </span>
+                        <span class="meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            Feb 20, 2027
+                        </span>
+                    </div>
+                    <p class="card-desc">Funding for innovative digital media projects. Applicants must submit a...</p>
+                    <div class="card-footer-row">
+                        <span class="card-amount">Rp30.000.000 Grant</span>
+                        <a href="components/detail5.html" class="btn-detail">View Detail</a>
+                    </div>
+                </div>
+
+                <div class="card-scholarship">
+                    <div class="card-top-row">
+                        <span class="tag-category">BUSINESS</span>
+                        <button class="btn-bookmark bookmark-toggle">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                        </button>
+                    </div>
+                    <h3 class="card-title">Entrepreneurial Spirit Fund</h3>
+                    <div class="card-meta-group">
+                        <span class="meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            Australia
+                        </span>
+                        <span class="meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            Mar 01, 2027
+                        </span>
+                    </div>
+                    <p class="card-desc">Empowering business students with a focus on social enterprise. Provides...</p>
+                    <div class="card-footer-row">
+                        <span class="card-amount">Partial Scholarship</span>
+                        <a href="components/detail6.html" class="btn-detail">View Detail</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-block reveal-on-scroll">
+            <h2 class="section-title container-title">Your Applications</h2>
+            <div class="applications-container-box">
+                <div class="applications-layout">
+                    <div class="applications-image-side" style="background-image: url('Assets_Sofeng/dashboard_anu.jpg');"></div>
+                    <div class="applications-list-side">
+                        <div class="app-list-header">
+                            <a href="components/student_myapplications.html" class="btn-view-all">View All →</a>
+                        </div>
+                        <a href="components/app1.html" class="app-item-row">
+                            <div class="app-item-info">
+                                <span class="app-icon-badge">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+                                </span>
+                                <div>
+                                    <h4 class="app-item-title">National STEM Excellence Grant</h4>
+                                    <p class="app-item-meta">Academic Merit • Annual</p>
+                                </div>
+                            </div>
+                            <span class="status-badge pending">Pending</span>
+                        </a>
+
+                        <a href="components/app2.html" class="app-item-row">
+                            <div class="app-item-info">
+                                <span class="app-icon-badge">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                </span>
+                                <div>
+                                    <h4 class="app-item-title">Creative Arts Global Scholarship</h4>
+                                    <p class="app-item-meta">Portfolio Based • One-time</p>
+                                </div>
+                            </div>
+                            <span class="status-badge accepted">Accepted</span>
+                        </a>
+
+                        <a href="components/app3.html" class="app-item-row">
+                            <div class="app-item-info">
+                                <span class="app-icon-badge">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                                </span>
+                                <div>
+                                    <h4 class="app-item-title">Leadership in Community Fellowship</h4>
+                                    <p class="app-item-meta">Community Service • Full Ride</p>
+                                </div>
+                            </div>
+                            <span class="status-badge rejected">Rejected</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-block testimonial-section reveal-on-scroll">
+            <h2 class="section-title text-center">Empowering the next generation of scholars</h2>
+            <p class="section-subtitle text-center">Join over 50,000 students who have successfully funded their education through Schola.<br>Our mission is to make quality education accessible to everyone, regardless of their background.</p>
+            
+            <div class="testimonial-grid">
+                <div class="testi-card">
+                    <div class="testi-avatar" style="background-image: url('Assets_Sofeng/dashboard_testi1.jpg');"></div>
+                    <h4 class="testi-name">Sarah Wijaya</h4>
+                    <span class="testi-sub">MEXT Scholarship — Japan</span>
+                    <p class="testi-text">"Through Schola, I found scholarship opportunities faster and managed all my applications in one place."</p>
+                    <a href="#" class="btn-detail">View Detail</a>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-avatar" style="background-image: url('Assets_Sofeng/dashboard_testi2.jpg');"></div>
+                    <h4 class="testi-name">Kevin Hartono</h4>
+                    <span class="testi-sub">LPDP Scholarship</span>
+                    <p class="testi-text">"The dashboard and deadline reminders really helped me stay organized during the application process."</p>
+                    <a href="#" class="btn-detail">View Detail</a>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-avatar" style="background-image: url('Assets_Sofeng/dashboard_testi3.jpg');"></div>
+                    <h4 class="testi-name">Alya Pramesti</h4>
+                    <span class="testi-sub">Erasmus Exchange Program</span>
+                    <p class="testi-text">"Schola made searching and applying for scholarships much simpler and less overwhelming."</p>
+                    <a href="#" class="btn-detail">View Detail</a>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-avatar" style="background-image: url('Assets_Sofeng/dashboard_testi4.jpg');"></div>
+                    <h4 class="testi-name">Daniel Lim</h4>
+                    <span class="testi-sub">Chevening Awards Scholarship</span>
+                    <p class="testi-text">"I could track my application status easily and upload all documents without confusion."</p>
+                    <a href="#" class="btn-detail">View Detail</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        function loadComponent(id, url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(id).innerHTML = data;
+                })
+                .catch(err => console.error('Gagal memuat komponen:', err));
+        }
+
+        loadComponent('sidebar-placeholder', 'components/student_sidebar.html');
+        loadComponent('navbar-placeholder', 'components/student_navbar.html');
+        loadComponent('footer-placeholder', 'components/student_footer.html');
+    </script>
+    <script src="js/navbar.js"></script>
+    <script>
+        document.querySelectorAll('.bookmark-toggle').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.classList.toggle('active');
+            });
+        });
+    </script>
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const scrollObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(element => {
+            scrollObserver.observe(element);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal-load').forEach(element => {
+                element.classList.add('revealed');
+            });
+        });
+    </script>
+</body>
+</html>
