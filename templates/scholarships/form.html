@@ -1,7 +1,121 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schola Admin - {% if scholarship %}Edit{% else %}Create{% endif %} Scholarship</title>
+    <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'admin_css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'admin_css/addEdit.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <style>
+        .form-card { background:#fff;border-radius:16px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,0.06);max-width:800px;margin:32px auto; }
+        .form-field { margin-bottom:20px; }
+        .form-field label { display:block;font-weight:600;margin-bottom:6px;color:#2F3A55;font-size:0.875rem; }
+        .form-field input, .form-field select, .form-field textarea { width:100%;padding:10px 14px;border:1px solid #CBD5E1;border-radius:8px;font-size:0.9rem;color:#2F3A55;box-sizing:border-box; }
+        .form-field textarea { min-height:100px;resize:vertical; }
+        .btn-submit { background:#5897FF;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.9rem; }
+        .btn-cancel { background:#F1F5F9;color:#64748B;border:none;padding:12px 28px;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.9rem;margin-left:12px;text-decoration:none;display:inline-block; }
+        .page-title { font-size:1.75rem;font-weight:700;color:#2F3A55;margin-bottom:4px; }
+        .page-subtitle { color:#64748B;margin-bottom:32px; }
+    </style>
+</head>
 <body>
-<h1>{{ action }} Scholarship</h1>
-<form method="post">{% csrf_token %}{{ form.as_p }}<button type="submit">Save</button></form>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="sidebar-close" id="sidebarClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5897FF" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+        </div>
+        <div class="sidebar-content">
+            <div class="sidebar-brand-group">
+                <a href="{% url 'scholarships:admin_list' %}" class="sidebar-logo">
+                    <img src="{% static 'assets/logo_admin.png' %}" alt="Schola Admin Logo">
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="{% url 'scholarships:admin_list' %}" class="sidebar-link">Scholarship Management</a>
+                <a href="{% url 'applications:admin_list' %}" class="sidebar-link">Applicants</a>
+                <a href="{% url 'users:profile' %}" class="sidebar-link">Profile</a>
+            </nav>
+        </div>
+    </aside>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-left-group">
+                <button class="menu-toggle" id="sidebarToggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+                <a href="{% url 'scholarships:admin_list' %}" class="logo active">
+                    <img src="{% static 'assets/logo_admin.png' %}" alt="Schola Admin Logo">
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div style="max-width:900px;margin:0 auto;padding:32px 24px;">
+        <h1 class="page-title">{% if scholarship %}Edit Scholarship{% else %}Create New Scholarship{% endif %}</h1>
+        <p class="page-subtitle">{% if scholarship %}Update the scholarship details below.{% else %}Fill in the details to add a new scholarship.{% endif %}</p>
+
+        {% if form.errors %}
+        <div style="background:#fee2e2;color:#991b1b;padding:12px 16px;border-radius:8px;margin-bottom:20px;">
+            {% for field in form %}{% for error in field.errors %}<div>{{ field.label }}: {{ error }}</div>{% endfor %}{% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="form-card">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-field">
+                    <label>Scholarship Name</label>
+                    <input type="text" name="name" value="{{ form.name.value|default:'' }}" required>
+                </div>
+                <div class="form-field">
+                    <label>Provider</label>
+                    <input type="text" name="provider" value="{{ form.provider.value|default:'' }}" required>
+                </div>
+                <div class="form-field">
+                    <label>Deadline</label>
+                    <input type="date" name="deadline" value="{{ form.deadline.value|default:'' }}" required>
+                </div>
+                <div class="form-field">
+                    <label>Country</label>
+                    <input type="text" name="country" value="{{ form.country.value|default:'' }}" required>
+                </div>
+                <div class="form-field">
+                    <label>Academic Level</label>
+                    <select name="level">
+                        <option value="s1" {% if form.level.value == 's1' %}selected{% endif %}>S1 (Undergraduate)</option>
+                        <option value="s2" {% if form.level.value == 's2' %}selected{% endif %}>S2 (Master)</option>
+                        <option value="s3" {% if form.level.value == 's3' %}selected{% endif %}>S3 (Doctoral)</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label>Requirements</label>
+                    <textarea name="requirements">{{ form.requirements.value|default:'' }}</textarea>
+                </div>
+                <div class="form-field">
+                    <label>Benefits</label>
+                    <textarea name="benefits">{{ form.benefits.value|default:'' }}</textarea>
+                </div>
+                <div style="margin-top:24px;">
+                    <button type="submit" class="btn-submit">{% if scholarship %}Save Changes{% else %}Create Scholarship{% endif %}</button>
+                    <a href="{% url 'scholarships:admin_list' %}" class="btn-cancel">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const sidebar = document.getElementById("sidebar"), overlay = document.getElementById("sidebarOverlay"), toggleBtn = document.getElementById("sidebarToggle"), closeBtn = document.getElementById("sidebarClose");
+            function toggle() { sidebar.classList.toggle("active"); overlay.classList.toggle("active"); }
+            if (toggleBtn) toggleBtn.addEventListener("click", toggle);
+            if (closeBtn) closeBtn.addEventListener("click", toggle);
+            if (overlay) overlay.addEventListener("click", toggle);
+        })();
+    </script>
 </body>
 </html>

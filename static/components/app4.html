@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schola - Application Detail</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app4.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+</head>
+<body>
+
+    <div id="sidebar-placeholder"></div>
+    <div id="navbar-placeholder"></div>
+
+    <div class="full-gradient-wrapper">
+        <div class="app-detail-wrapper reveal-load">
+            
+            <div class="app-back-nav-header">
+                <a href="student_myapplications.html" class="btn-back-to-apps">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    Back to My Applications
+                </a>
+                <h1>Tech Innovators Foundation</h1>
+                <p>Application ID: #SCH-2026-05120 &bull; Submitted on Oct 05, 2026</p>
+            </div>
+
+            <div class="app-top-three-row">
+                
+                <div class="content-card reveal-on-scroll">
+                    <h2 class="app-section-title">Application Progress</h2>
+                    <div class="progress-timeline-tracker">
+                        <div class="timeline-step status-complete">
+                            <div class="step-marker-node">✓</div>
+                            <div class="step-text-details">
+                                <strong>Form Submission</strong>
+                                <span>Completed on Oct 05, 2026</span>
+                            </div>
+                        </div>
+                        <div class="timeline-step status-active">
+                            <div class="step-marker-node">2</div>
+                            <div class="step-text-details">
+                                <strong>Proposal Screening</strong>
+                                <span>Under initial documentation review</span>
+                            </div>
+                        </div>
+                        <div class="timeline-step status-upcoming">
+                            <div class="step-marker-node">3</div>
+                            <div class="step-text-details">
+                                <strong>Technical Interview</strong>
+                                <span>To be scheduled upon screening pass</span>
+                            </div>
+                        </div>
+                        <div class="timeline-step status-upcoming">
+                            <div class="step-marker-node">4</div>
+                            <div class="step-text-details">
+                                <strong>Final Selection</strong>
+                                <span>Expected late November 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card reveal-on-scroll">
+                    <h2 class="app-section-title">Application Status</h2>
+                    <div class="current-status-badge-wrap">
+                        <span class="status-indicator-pill pending">Pending</span>
+                    </div>
+                    <p class="status-caption-desc">Your innovative tech proposal is currently being queued for detailed assessment by our engineering selection panel.</p>
+                    <div class="sidebar-divider-line"></div>
+                    <div class="sidebar-meta-info-stack">
+                        <div class="meta-info-row">
+                            <span class="lbl">Funding Value:</span>
+                            <span class="val font-bold">Full Tuition Cover</span>
+                        </div>
+                        <div class="meta-info-row">
+                            <span class="lbl">Next Action:</span>
+                            <span class="val font-bold text-blue">Awaiting Review</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card interview-notice-navy-card reveal-on-scroll">
+                    <div class="notice-inner-content">
+                        <h2 class="app-section-title text-white">Innovation Portal</h2>
+                        <p class="text-white-desc">Once document validation wraps up, candidates selected for the technical coding hack stage will receive dashboard credentials here.</p>
+                        <button class="btn-sidebar-action-capsule btn-pop-interaction">View Roadmap</button>
+                    </div>
+                    <div class="notice-mascot-wrapper">
+                        <img src="{% static 'assets/saved_mascot.png' %}" alt="Schola Mascot" class="mascot-img">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="app-bottom-two-columns-row">
+                
+                <div class="content-card reveal-on-scroll">
+                    <h2 class="app-section-title">Submitted Tech Profile</h2>
+                    <div class="profile-fields-vertical-stack">
+                        <div class="profile-meta-field">
+                            <span class="field-lbl">FULL NAME</span>
+                            <span class="field-val">Adrian Wijaya</span>
+                        </div>
+                        <div class="profile-meta-field">
+                            <span class="field-lbl">ACADEMIC MAJOR</span>
+                            <span class="field-val">Computer Science (CS Major)</span>
+                        </div>
+                        <div class="profile-meta-field">
+                            <span class="field-lbl">INNOVATION TRACK</span>
+                            <span class="field-val">Software Engineering & AI Development</span>
+                        </div>
+                        <div class="profile-meta-field">
+                            <span class="field-lbl">GRANT SECTOR</span>
+                            <span class="field-val">Minority Grant Ecosystem</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card reveal-on-scroll">
+                    <h2 class="app-section-title">Your Uploaded Documents</h2>
+                    <div class="uploaded-docs-vertical-stack">
+                        <div class="document-item-row">
+                            <div class="doc-icon-badge">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                            </div>
+                            <div class="doc-meta-details">
+                                <strong>Project_Prototype_Abstract.pdf</strong>
+                                <span>PDF &bull; 2.8 MB &bull; Processing</span>
+                            </div>
+                            <span class="badge-doc-status status-verified">Verified</span>
+                        </div>
+                        <div class="document-item-row">
+                            <div class="doc-icon-badge">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                            </div>
+                            <div class="doc-meta-details">
+                                <strong>Minority_Community_Certificate.pdf</strong>
+                                <span>PDF &bull; 1.1 MB &bull; Processing</span>
+                            </div>
+                            <span class="badge-doc-status status-verified">Verified</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        function loadComponent(id, url) {
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) throw new Error('HTTP status error: ' + response.status);
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById(id).innerHTML = data;
+                    setTimeout(() => {
+                        const items = document.querySelectorAll('.nav-link, .sidebar-link, .logo, .navbar-brand, .logo-container a');
+                        items.forEach(link => {
+                            const linkText = link.textContent.trim().toLowerCase();
+                           if (link.innerHTML.includes('img') || link.classList.contains('logo') || linkText === '') {
+                                link.setAttribute('href', '../index.html');
+                                link.classList.remove('active');
+                            }
+                            if (linkText.includes('scholarship')) {
+                                link.setAttribute('href', '../index.html');
+                                link.classList.remove('active');
+                            } 
+                            else if (linkText.includes('application') || linkText.includes('my app')) {
+                                link.setAttribute('href', 'student_myapplications.html');
+                                link.classList.add('active');
+                            } else if (linkText.includes('notification')) {
+                                link.setAttribute('href', 'notifications.html');
+                            } else if (linkText.includes('saved')) {
+                                link.setAttribute('href', 'student_saved.html');
+                            } else if (linkText.includes('profile')) {
+                                link.setAttribute('href', 'student_profile.html');
+                            }
+                        });
+                    }, 100);
+                })
+                .catch(err => console.error('Gagal memproses komponen navigasi:', err));
+        }
+
+        loadComponent('sidebar-placeholder', 'student_sidebar.html');
+        loadComponent('navbar-placeholder', 'student_navbar.html');
+        loadComponent('footer-placeholder', 'student_footer.html');
+
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal-load').forEach(el => el.classList.add('revealed'));
+        });
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('revealed'); });
+        }, { root: null, threshold: 0.05 });
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => scrollObserver.observe(el));
+    </script>
+    <script src="{% static 'js/navbar.js' %}"></script>
+</body>
+</html>

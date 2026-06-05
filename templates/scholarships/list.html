@@ -1,7 +1,167 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schola - Student Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+</head>
 <body>
-<h1>Scholarships</h1>
-{% for s in scholarships %}<p>{{ s.name }}</p>{% endfor %}
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="sidebar-close" id="sidebarClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5897FF" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+        </div>
+        <div class="sidebar-content">
+            <div class="sidebar-brand-group">
+                <a href="{% url 'scholarships:list' %}" class="sidebar-logo">
+                    <img src="{% static 'assets/logo.png' %}" alt="Schola Logo">
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="{% url 'scholarships:list' %}" class="sidebar-link">Scholarships</a>
+                <a href="{% url 'applications:status' %}" class="sidebar-link">My Applications</a>
+                <a href="{% url 'users:profile' %}" class="sidebar-link">Profile</a>
+            </nav>
+        </div>
+        <div class="sidebar-footer">
+            <a href="{% url 'scholarships:list' %}" class="btn-find-scholarships">Find Scholarships</a>
+        </div>
+    </aside>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-left-group">
+                <button class="menu-toggle" id="sidebarToggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+                <a href="{% url 'scholarships:list' %}" class="logo active">
+                    <img src="{% static 'assets/logo.png' %}" alt="Schola Logo">
+                </a>
+                <div class="nav-center">
+                    <a href="{% url 'scholarships:list' %}" class="nav-link">Scholarships</a>
+                    <a href="{% url 'applications:status' %}" class="nav-link">My Applications</a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="{% url 'users:profile' %}" class="nav-icon-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-bg" style="background-image: url('{% static 'assets/dashboard_hero.jpg' %}');"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-container">
+            <h1 class="hero-title">Empower Your Academic Journey</h1>
+            <p class="hero-desc">Discover curated scholarships tailored to your ambitions. We bridge the gap between financial constraints and educational dreams.</p>
+        </div>
+    </section>
+
+    <section class="filter-section">
+        <div class="filter-container">
+            <form method="get" action="{% url 'scholarships:list' %}">
+                <div class="search-box-wrapper">
+                    <span class="search-title">Search Scholarships</span>
+                    <div class="search-input-group">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <input type="text" name="q" placeholder="e.g. STEM, Arts" value="{{ request.GET.q }}">
+                    </div>
+                </div>
+                <div class="filter-selectors-grid">
+                    <div class="selector-item">
+                        <span class="selector-label">Country</span>
+                        <select name="country">
+                            <option value="">Any Country</option>
+                            {% for c in countries %}
+                            <option value="{{ c }}" {% if request.GET.country == c %}selected{% endif %}>{{ c }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="selector-item">
+                        <span class="selector-label">Academic Level</span>
+                        <select name="level">
+                            <option value="">All Levels</option>
+                            <option value="s1" {% if request.GET.level == 's1' %}selected{% endif %}>S1 (Undergraduate)</option>
+                            <option value="s2" {% if request.GET.level == 's2' %}selected{% endif %}>S2 (Master)</option>
+                            <option value="s3" {% if request.GET.level == 's3' %}selected{% endif %}>S3 (Doctoral)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-apply-filter">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+                        Apply Filters
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <main class="container dashboard-main">
+        <section class="section-block">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Available Scholarships</h2>
+                    <p class="section-subtitle">{{ scholarships|length }} scholarship(s) found</p>
+                </div>
+            </div>
+            <div class="scholarship-grid">
+                {% for s in scholarships %}
+                <div class="card-scholarship">
+                    <div class="card-top-row">
+                        <span class="tag-category">{{ s.level|upper }}</span>
+                    </div>
+                    <h3 class="card-title">{{ s.name }}</h3>
+                    <div class="card-meta-group">
+                        <span class="meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"></path></svg>
+                            {{ s.country }}
+                        </span>
+                        <span class="meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            {{ s.deadline }}
+                        </span>
+                    </div>
+                    <p class="card-desc">{{ s.benefits|truncatechars:80 }}</p>
+                    <div class="card-footer-row">
+                        <span class="card-amount">{{ s.provider }}</span>
+                        <a href="{% url 'scholarships:detail' s.pk %}" class="btn-detail">View Detail</a>
+                    </div>
+                </div>
+                {% empty %}
+                <p style="color:#64748B;">No scholarships found matching your criteria.</p>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left"><span class="copyright">© 2026 Schola Scholarship Management. Empowering academic excellence.</span></div>
+            <div class="footer-right">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/navbar.js' %}"></script>
+    <script>
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarClose = document.getElementById('sidebarClose');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        sidebarToggle.addEventListener('click', () => { sidebar.classList.add('active'); sidebarOverlay.classList.add('active'); });
+        sidebarClose.addEventListener('click', () => { sidebar.classList.remove('active'); sidebarOverlay.classList.remove('active'); });
+        sidebarOverlay.addEventListener('click', () => { sidebar.classList.remove('active'); sidebarOverlay.classList.remove('active'); });
+    </script>
 </body>
 </html>

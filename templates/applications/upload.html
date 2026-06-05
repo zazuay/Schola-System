@@ -1,7 +1,73 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schola - Upload Documents</title>
+    <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body { background:#F8FAFC;font-family:sans-serif; }
+        .upload-card { background:#fff;border-radius:16px;padding:40px;max-width:560px;margin:60px auto;box-shadow:0 4px 24px rgba(0,0,0,0.08); }
+        h1 { color:#2F3A55;font-size:1.75rem;font-weight:700;margin-bottom:4px; }
+        .subtitle { color:#64748B;margin-bottom:28px;font-size:0.9rem; }
+        .form-field { margin-bottom:20px; }
+        .form-field label { display:block;font-weight:600;margin-bottom:6px;color:#2F3A55;font-size:0.875rem; }
+        .form-field select, .form-field input[type="file"] { width:100%;padding:10px 14px;border:1px solid #CBD5E1;border-radius:8px;font-size:0.9rem;box-sizing:border-box; }
+        .file-note { font-size:0.75rem;color:#94A3B8;margin-top:4px; }
+        .btn-upload { background:#5897FF;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.9rem;width:100%;margin-top:8px; }
+        .btn-back { display:block;text-align:center;margin-top:12px;color:#64748B;text-decoration:none;font-size:0.875rem; }
+        .existing-docs { margin-bottom:28px; }
+        .existing-docs h2 { font-size:1rem;font-weight:600;color:#2F3A55;margin-bottom:12px; }
+        .doc-row { display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#F8FAFC;border-radius:8px;margin-bottom:8px;font-size:0.875rem; }
+        .doc-type { font-weight:600;color:#2F3A55; }
+        .doc-size { color:#94A3B8; }
+        .msg-error { background:#fee2e2;color:#991b1b;padding:10px 14px;border-radius:8px;font-size:0.875rem;margin-bottom:16px; }
+        .msg-success { background:#d1fae5;color:#065f46;padding:10px 14px;border-radius:8px;font-size:0.875rem;margin-bottom:16px; }
+    </style>
+</head>
 <body>
-<h1>Upload Documents</h1>
-<form method="post" enctype="multipart/form-data">{% csrf_token %}{{ form.as_p }}<button type="submit">Upload</button></form>
+    <div class="upload-card">
+        <h1>Upload Documents</h1>
+        <p class="subtitle">For: <strong>{{ application.scholarship.name }}</strong></p>
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="{% if message.tags == 'error' %}msg-error{% else %}msg-success{% endif %}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+
+        {% if documents %}
+        <div class="existing-docs">
+            <h2>Uploaded Documents</h2>
+            {% for doc in documents %}
+            <div class="doc-row">
+                <span class="doc-type">{{ doc.get_type_display|default:doc.type|upper }}</span>
+                <span class="doc-size">{{ doc.file_size|filesizeformat }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-field">
+                <label>Document Type</label>
+                <select name="type">
+                    <option value="cv">CV / Resume</option>
+                    <option value="transcript">Academic Transcript</option>
+                    <option value="motivation_letter">Motivation Letter</option>
+                </select>
+            </div>
+            <div class="form-field">
+                <label>File</label>
+                <input type="file" name="file" accept=".pdf,.jpg,.jpeg,.png" required>
+                <p class="file-note">Accepted: PDF, JPG, PNG. Max size: 5 MB.</p>
+            </div>
+            <button type="submit" class="btn-upload">Upload Document</button>
+        </form>
+        <a href="{% url 'applications:status' %}" class="btn-back">← Back to My Applications</a>
+    </div>
 </body>
 </html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schola - Application Detail</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+</head>
+<body>
+
+    <div id="sidebar-placeholder"></div>
+    <div id="navbar-placeholder"></div>
+
+    <div class="full-gradient-wrapper">
+        <div class="app-detail-wrapper reveal-load">
+            
+            <div class="app-back-nav-header">
+                <a href="student_myapplications.html" class="btn-back-to-apps">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    Back to My Applications
+                </a>
+                <h1>Creative Arts Global Scholarship</h1>
+                <p>Application ID: #SCH-2026-08144 &bull; Submitted on Sep 28, 2026</p>
+            </div>
+
+            <div class="app-top-three-row">
+                
+                <div class="content-card reveal-on-scroll">
+                    <h2 class="app-section-title">Application Progress</h2>
+                    <div class="progress-timeline-tracker">
+                        <div class="timeline-step status-complete">
+                            <div class="step-marker-node">✓</div>
+                            <div class="step-text-details">
+                                <strong>Form Submission</strong>
+                                <span>Completed on Sep 28, 2026</span>
+                            </div>
+                        </div>
+                        <div class="timeline-step status-complete">
+                            <div class="step-marker-node">✓</div>
+                            <div class="step-text-details">
+                                <strong>Portfolio Review</strong>
+                                <span>Passed creative panel validation</span>
+                            </div>
+                        </div>
+                        <div class="timeline-step status-complete">
+                            <div class="step-marker-node">✓</div>
+                            <div class="step-text-details">
+                                <strong>Interview Stage</strong>
+                                <span>Completed on Oct 15, 2026</span>
+                            </div>
+                        </div>
+                        <div class="timeline-step status-active">
+                            <div class="step-marker-node">✓</div>
+                            <div class="step-text-details">
+                                <strong>Final Decision</strong>
+                                <span>Accepted &bull; Letter Issued</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card reveal-on-scroll">
+                    <h2 class="app-section-title">Application Status</h2>
+                    <div class="current-status-badge-wrap">
+                        <span class="status-indicator-pill accepted">Accepted</span>
+                    </div>
+                    <p class="status-caption-desc">Congratulations! The Creative Arts Selection Board has approved your digital media portfolio for final grant allocation.</p>
+                    <div class="sidebar-divider-line"></div>
+                    <div class="sidebar-meta-info-stack">
+                        <div class="meta-info-row">
+                            <span class="lbl">Grant Payout:</span>
+                            <span class="val font-bold">Rp30.000.000 (One-time)</span>
+                        </div>
+                        <div class="meta-info-row">
+                            <span class="lbl">Next Action:</span>
+                            <span class="val font-bold text-blue">Download Award Letter</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card interview-notice-navy-card reveal-on-scroll">
+                    <div class="notice-inner-content">
+                        <h2 class="app-section-title text-white">Award Onboarding</h2>
+                        <p class="text-white-desc">Your virtual onboarding briefing regarding grant disbursement and exhibition timelines is set for Nov 10, 2026.</p>
+                        <button class="btn-sidebar-action-capsule btn-pop-interaction">Download Letter</button>
+                    </div>
+                    <div class="notice-mascot-wrapper">
+                        <img src="{% static 'assets/saved_mascot.png' %}" alt="Schola Mascot" class="mascot-img">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="app-bottom-two-columns-row">
+                
+                <div class="content-card reveal-on-scroll">
+                    <h2 class="app-section-title">Submitted Design Profile</h2>
+                    <div class="profile-fields-vertical-stack">
+                        <div class="profile-meta-field">
+                            <span class="field-lbl">FULL NAME</span>
+                            <span class="field-val">Adrian Wijaya</span>
+                        </div>
+                        <div class="profile-meta-field">
+                            <span class="field-lbl">CREATIVE TRACK</span>
+                            <span class="field-val">Digital Media & Interactive Arts</span>
+                        </div>
+                        <div class="profile-meta-field">
+                            <span class="field-lbl">PORTFOLIO LINK</span>
+                            <span class="field-val text-blue font-bold">behance.net/adrianwijaya</span>
+                        </div>
+                        <div class="profile-meta-field">
+                            <span class="field-lbl">FUNDING TYPE</span>
+                            <span class="field-val">Portfolio Based &bull; One-time</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card reveal-on-scroll">
+                    <h2 class="app-section-title">Your Uploaded Documents</h2>
+                    <div class="uploaded-docs-vertical-stack">
+                        <div class="document-item-row">
+                            <div class="doc-icon-badge">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                            </div>
+                            <div class="doc-meta-details">
+                                <strong>Creative_Portfolio_Compilation.pdf</strong>
+                                <span>PDF &bull; 14.8 MB &bull; Evaluated</span>
+                            </div>
+                            <span class="badge-doc-status status-verified">Verified</span>
+                        </div>
+                        <div class="document-item-row">
+                            <div class="doc-icon-badge">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
+                            </div>
+                            <div class="doc-meta-details">
+                                <strong>Project_Proposal_Exhibition.pdf</strong>
+                                <span>PDF &bull; 4.1 MB &bull; Approved</span>
+                            </div>
+                            <span class="badge-doc-status status-verified">Verified</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        function loadComponent(id, url) {
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) throw new Error('HTTP status error: ' + response.status);
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById(id).innerHTML = data;
+                    setTimeout(() => {
+                        const items = document.querySelectorAll('.nav-link, .sidebar-link, .logo, .navbar-brand, .logo-container a');
+                        items.forEach(link => {
+                            const linkText = link.textContent.trim().toLowerCase();
+                            if (link.innerHTML.includes('img') || link.classList.contains('logo') || linkText === '') {
+                                link.setAttribute('href', '../index.html');
+                                link.classList.remove('active');
+                            }
+                            if (linkText.includes('scholarship')) {
+                                link.setAttribute('href', '../index.html');
+                                link.classList.remove('active');
+                            } 
+                            else if (linkText.includes('application') || linkText.includes('my app')) {
+                                link.setAttribute('href', 'student_myapplications.html');
+                                link.classList.add('active');
+                            } else if (linkText.includes('notification')) {
+                                link.setAttribute('href', 'notifications.html');
+                            } else if (linkText.includes('saved')) {
+                                link.setAttribute('href', 'student_saved.html');
+                            } else if (linkText.includes('profile')) {
+                                link.setAttribute('href', 'student_profile.html');
+                            }
+                        });
+                    }, 100);
+                })
+                .catch(err => console.error('Gagal memproses komponen navigasi:', err));
+        }
+
+        loadComponent('sidebar-placeholder', 'student_sidebar.html');
+        loadComponent('navbar-placeholder', 'student_navbar.html');
+        loadComponent('footer-placeholder', 'student_footer.html');
+
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal-load').forEach(el => el.classList.add('revealed'));
+        });
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('revealed'); });
+        }, { root: null, threshold: 0.05 });
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => scrollObserver.observe(el));
+    </script>
+    <script src="{% static 'js/navbar.js' %}"></script>
+</body>
+</html>

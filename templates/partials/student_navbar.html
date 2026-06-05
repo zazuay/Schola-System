@@ -1,0 +1,41 @@
+{% load static %}
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <button class="sidebar-close" id="sidebarClose">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5897FF" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+    </div>
+    <div class="sidebar-content">
+        <div class="sidebar-brand-group">
+            <a href="{% url 'scholarships:list' %}" class="sidebar-logo">
+                <img src="{% static 'assets/logo.png' %}" alt="Schola Logo">
+            </a>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="{% url 'scholarships:list' %}" class="sidebar-link">Scholarships</a>
+            <a href="{% url 'applications:status' %}" class="sidebar-link">My Applications</a>
+            <a href="{% url 'users:profile' %}" class="sidebar-link">Profile</a>
+        </nav>
+    </div>
+</aside>
+
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="nav-left-group">
+            <button class="menu-toggle" id="sidebarToggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+            <a href="{% url 'scholarships:list' %}" class="logo active">
+                <img src="{% static 'assets/logo.png' %}" alt="Schola Logo">
+            </a>
+            <div class="nav-center">
+                <a href="{% url 'scholarships:list' %}" class="nav-link">Scholarships</a>
+                <a href="{% url 'applications:status' %}" class="nav-link">My Applications</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <a href="{% url 'users:profile' %}" class="nav-icon-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </a>
+        </div>
+    </div>
+</nav>

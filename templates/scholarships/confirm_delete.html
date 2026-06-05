@@ -1,7 +1,30 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schola Admin - Delete Scholarship</title>
+    <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+    <link rel="stylesheet" href="{% static 'admin_css/navbar.css' %}">
+    <style>
+        body { background:#F8FAFC;font-family:sans-serif; }
+        .confirm-card { background:#fff;border-radius:16px;padding:40px;max-width:480px;margin:80px auto;box-shadow:0 4px 24px rgba(0,0,0,0.08);text-align:center; }
+        h1 { color:#2F3A55;font-size:1.5rem;margin-bottom:12px; }
+        p { color:#64748B;margin-bottom:32px; }
+        .btn-delete { background:#ef4444;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.9rem; }
+        .btn-cancel { background:#F1F5F9;color:#64748B;padding:12px 28px;border-radius:8px;font-weight:600;font-size:0.9rem;text-decoration:none;margin-left:12px;display:inline-block; }
+    </style>
+</head>
 <body>
-<h1>Delete {{ scholarship.name }}?</h1>
-<form method="post">{% csrf_token %}<button type="submit">Confirm</button></form>
+    <div class="confirm-card">
+        <h1>Delete Scholarship?</h1>
+        <p>Are you sure you want to delete <strong>{{ scholarship.name }}</strong>? This action cannot be undone.</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-delete">Yes, Delete</button>
+            <a href="{% url 'scholarships:admin_list' %}" class="btn-cancel">Cancel</a>
+        </form>
+    </div>
 </body>
 </html>

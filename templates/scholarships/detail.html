@@ -1,7 +1,142 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schola - {{ scholarship.name }}</title>
+    <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/scholarshipdetail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+</head>
 <body>
-<h1>{{ scholarship.name }}</h1>
-<p>{{ scholarship.provider }}</p>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="sidebar-close" id="sidebarClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5897FF" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+        </div>
+        <div class="sidebar-content">
+            <div class="sidebar-brand-group">
+                <a href="{% url 'scholarships:list' %}" class="sidebar-logo">
+                    <img src="{% static 'assets/logo.png' %}" alt="Schola Logo">
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="{% url 'scholarships:list' %}" class="sidebar-link">Scholarships</a>
+                <a href="{% url 'applications:status' %}" class="sidebar-link">My Applications</a>
+                <a href="{% url 'users:profile' %}" class="sidebar-link">Profile</a>
+            </nav>
+        </div>
+    </aside>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-left-group">
+                <button class="menu-toggle" id="sidebarToggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+                <a href="{% url 'scholarships:list' %}" class="logo active">
+                    <img src="{% static 'assets/logo.png' %}" alt="Schola Logo">
+                </a>
+                <div class="nav-center">
+                    <a href="{% url 'scholarships:list' %}" class="nav-link">Scholarships</a>
+                    <a href="{% url 'applications:status' %}" class="nav-link">My Applications</a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="{% url 'users:profile' %}" class="nav-icon-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="full-gradient-wrapper">
+        <section class="detail-hero-section reveal-load">
+            <div class="detail-hero-container">
+                <div class="detail-hero-main">
+                    <nav class="breadcrumb-nav">
+                        <a href="{% url 'scholarships:list' %}">Scholarships</a>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                        <span>{{ scholarship.name }}</span>
+                    </nav>
+                    <span class="badge-academic-merit">{{ scholarship.level|upper }}</span>
+                    <h1 class="detail-main-title">{{ scholarship.name }}</h1>
+                    <p class="detail-main-desc">{{ scholarship.benefits }}</p>
+                    <div class="detail-image-wrapper">
+                        <img src="{% static 'assets/scholarshipdetail.png' %}" alt="{{ scholarship.name }}">
+                    </div>
+                </div>
+
+                <div class="detail-hero-sidebar">
+                    <div class="sticky-info-card">
+                        <div class="info-row-block">
+                            <span class="info-label-title">Provider</span>
+                            <span class="info-amount-value">{{ scholarship.provider }}</span>
+                            <span class="info-sub-value">{{ scholarship.country }}</span>
+                        </div>
+                        <div class="info-row-block">
+                            <span class="info-label-title">Deadline</span>
+                            <span class="info-amount-value">{{ scholarship.deadline }}</span>
+                        </div>
+
+                        {% if already_applied %}
+                        <div style="background:#d1fae5;color:#065f46;padding:12px;border-radius:8px;text-align:center;font-weight:600;">
+                            ✓ You have already applied
+                        </div>
+                        {% else %}
+                        <a href="{% url 'applications:apply' scholarship.pk %}" class="btn-main-apply">Apply Now →</a>
+                        {% endif %}
+                    </div>
+
+                    <div class="need-help-card">
+                        <h3 class="help-card-title">Need Help?</h3>
+                        <p class="help-card-desc">Our support team is available to guide you through the application process.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <main class="detail-main-body">
+            <div class="detail-content-container">
+                <section class="info-content-block reveal-on-scroll">
+                    <h2 class="block-section-title">Requirements</h2>
+                    <p class="block-section-p">{{ scholarship.requirements }}</p>
+                </section>
+                <section class="info-content-block reveal-on-scroll">
+                    <h2 class="block-section-title">Benefits</h2>
+                    <p class="block-section-p">{{ scholarship.benefits }}</p>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <span class="copyright">© 2026 Schola Scholarship Management. Empowering academic excellence.</span>
+            <div class="footer-right">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/navbar.js' %}"></script>
+    <script>
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarClose = document.getElementById('sidebarClose');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        sidebarToggle.addEventListener('click', () => { sidebar.classList.add('active'); sidebarOverlay.classList.add('active'); });
+        sidebarClose.addEventListener('click', () => { sidebar.classList.remove('active'); sidebarOverlay.classList.remove('active'); });
+        sidebarOverlay.addEventListener('click', () => { sidebar.classList.remove('active'); sidebarOverlay.classList.remove('active'); });
+        window.addEventListener('DOMContentLoaded', () => { document.querySelectorAll('.reveal-load').forEach(el => el.classList.add('revealed')); });
+        const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('revealed'); }); }, { threshold: 0.05 });
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => obs.observe(el));
+    </script>
 </body>
 </html>

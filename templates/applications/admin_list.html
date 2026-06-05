@@ -1,7 +1,151 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schola Admin - Applicants</title>
+    <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'admin_css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'admin_css/applicantList.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+</head>
 <body>
-<h1>All Applications</h1>
-{% for app in applications %}<p>{{ app.user.name }} → {{ app.scholarship.name }}</p>{% endfor %}
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="sidebar-close" id="sidebarClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5897FF" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+        </div>
+        <div class="sidebar-content">
+            <div class="sidebar-brand-group">
+                <a href="{% url 'scholarships:admin_list' %}" class="sidebar-logo" id="sidebarLogo">
+                    <img src="{% static 'assets/logo_admin.png' %}" alt="Schola Admin Logo">
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="{% url 'scholarships:admin_list' %}" class="sidebar-link">Scholarship Management</a>
+                <a href="{% url 'applications:admin_list' %}" class="sidebar-link">Applicants</a>
+                <a href="{% url 'users:profile' %}" class="sidebar-link">Profile</a>
+            </nav>
+        </div>
+        <div class="sidebar-footer">
+            <a href="{% url 'scholarships:create' %}" class="btn-find-scholarships">Create New Scholarship</a>
+        </div>
+    </aside>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-left-group">
+                <button class="menu-toggle" id="sidebarToggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+                <a href="{% url 'scholarships:admin_list' %}" class="logo active">
+                    <img src="{% static 'assets/logo_admin.png' %}" alt="Schola Admin Logo">
+                </a>
+            </div>
+            <div class="nav-right">
+                <a href="{% url 'users:logout' %}" class="nav-icon-btn" title="Logout">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="app-main-content reveal-load">
+        <div class="app-header-row">
+            <div class="header-titles">
+                <h1>Applicants</h1>
+                <p>Manage and review scholarship applications.</p>
+            </div>
+        </div>
+
+        <div class="app-stats-grid">
+            <div class="app-stat-card reveal-on-scroll">
+                <div class="stat-card-body">
+                    <p class="stat-label">Total Applicants</p>
+                    <h3 class="stat-value">{{ applications|length }}</h3>
+                </div>
+            </div>
+            <div class="app-stat-card reveal-on-scroll">
+                <div class="stat-card-body">
+                    <p class="stat-label">Pending</p>
+                    <h3 class="stat-value">{{ pending_count }}</h3>
+                </div>
+            </div>
+            <div class="app-stat-card reveal-on-scroll">
+                <div class="stat-card-body">
+                    <p class="stat-label">Accepted</p>
+                    <h3 class="stat-value">{{ accepted_count }}</h3>
+                </div>
+            </div>
+            <div class="app-stat-card reveal-on-scroll">
+                <div class="stat-card-body">
+                    <p class="stat-label">Rejected</p>
+                    <h3 class="stat-value">{{ rejected_count }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card app-table-section reveal-on-scroll">
+            <div class="responsive-table-wrapper">
+                <table class="app-data-table" id="applicantsTable">
+                    <thead>
+                        <tr>
+                            <th>STUDENT NAME</th>
+                            <th>SCHOLARSHIP</th>
+                            <th>APPLIED DATE</th>
+                            <th>STATUS</th>
+                            <th style="text-align:center;">ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for app in applications %}
+                        <tr class="hover-row-interaction data-row" data-status="{{ app.status }}">
+                            <td>
+                                <div class="student-profile-cell">
+                                    <div class="avatar-letter-box blue-box">{{ app.user.name|first|upper }}</div>
+                                    <div class="profile-meta">
+                                        <strong>{{ app.user.name }}</strong>
+                                        <span>{{ app.user.email }}</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{ app.scholarship.name }}</td>
+                            <td>{{ app.date_submitted }}</td>
+                            <td>
+                                <span class="status-tag tag-{{ app.status }}">{{ app.status|capfirst }}</span>
+                            </td>
+                            <td style="text-align:center;">
+                                <a href="{% url 'applications:admin_detail' app.pk %}" class="btn-view-detail btn-pop-interaction">View Detail</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr><td colspan="5" style="text-align:center;padding:24px;color:#64748B;">No applications yet.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" style="width:100vw;background:#FFFFFF;border-top:1px solid #E2E8F0;position:relative;margin-top:80px;left:50%;transform:translateX(-50%);box-sizing:border-box;">
+        <div class="footer-container" style="max-width:1200px;margin:0 auto;padding:24px 32px;display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:0.75rem;color:#64748B;">© 2026 Schola Scholarship Management. Empowering academic excellence.</span>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => { document.querySelectorAll('.reveal-load').forEach(el => el.classList.add('revealed')); });
+        const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('revealed'); }); }, { threshold: 0.05 });
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => obs.observe(el));
+        (function() {
+            const sidebar = document.getElementById("sidebar"), overlay = document.getElementById("sidebarOverlay"), toggleBtn = document.getElementById("sidebarToggle"), closeBtn = document.getElementById("sidebarClose");
+            function toggle() { sidebar.classList.toggle("active"); overlay.classList.toggle("active"); }
+            if (toggleBtn) toggleBtn.addEventListener("click", toggle);
+            if (closeBtn) closeBtn.addEventListener("click", toggle);
+            if (overlay) overlay.addEventListener("click", toggle);
+        })();
+    </script>
 </body>
 </html>

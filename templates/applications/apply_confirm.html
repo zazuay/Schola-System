@@ -1,7 +1,50 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schola - Apply</title>
+    <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body { background:#F8FAFC;font-family:sans-serif; }
+        .confirm-card { background:#fff;border-radius:16px;padding:40px;max-width:520px;margin:80px auto;box-shadow:0 4px 24px rgba(0,0,0,0.08); }
+        h1 { color:#2F3A55;font-size:1.75rem;font-weight:700;margin-bottom:8px; }
+        .meta { color:#64748B;font-size:0.875rem;margin-bottom:24px; }
+        .detail-row { display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #F1F5F9;font-size:0.9rem; }
+        .detail-row span:first-child { color:#64748B; }
+        .detail-row span:last-child { font-weight:600;color:#2F3A55; }
+        .btn-apply { background:#5897FF;color:#fff;border:none;padding:14px 32px;border-radius:8px;font-weight:600;cursor:pointer;font-size:1rem;width:100%;margin-top:24px; }
+        .btn-back { display:block;text-align:center;margin-top:12px;color:#64748B;text-decoration:none;font-size:0.875rem; }
+        .messages { margin-bottom:16px; }
+        .msg-error { background:#fee2e2;color:#991b1b;padding:10px 14px;border-radius:8px;font-size:0.875rem; }
+    </style>
+</head>
 <body>
-<h1>Apply for {{ scholarship.name }}?</h1>
-<form method="post">{% csrf_token %}<button type="submit">Apply</button></form>
+    <div class="confirm-card">
+        <h1>Confirm Application</h1>
+        <p class="meta">You are about to apply for the following scholarship.</p>
+
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="msg-error">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="detail-row"><span>Scholarship</span><span>{{ scholarship.name }}</span></div>
+        <div class="detail-row"><span>Provider</span><span>{{ scholarship.provider }}</span></div>
+        <div class="detail-row"><span>Country</span><span>{{ scholarship.country }}</span></div>
+        <div class="detail-row"><span>Level</span><span>{{ scholarship.level|upper }}</span></div>
+        <div class="detail-row"><span>Deadline</span><span>{{ scholarship.deadline }}</span></div>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-apply">Submit Application</button>
+        </form>
+        <a href="{% url 'scholarships:detail' scholarship.pk %}" class="btn-back">← Back to scholarship</a>
+    </div>
 </body>
 </html>
