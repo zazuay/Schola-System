@@ -198,7 +198,7 @@
                                 <span class="status-badge pending">Pending</span>
                             </div>
                             <div class="td-col col-action">
-                                <a href="app1.html" class="btn-table-action">View Details</a>
+                                <a href="{% url 'scholarships:detail' scholarship.pk %}" class="btn-table-action">View Details</a>
                             </div>
                         </div>
 
@@ -255,7 +255,7 @@
                                 <span class="status-badge pending">Pending</span>
                             </div>
                             <div class="td-col col-action">
-                                <a href="app4.html" class="btn-table-action">View Details</a>
+                                <a href="{% url 'scholarships:detail' scholarship.pk %}" class="btn-table-action">View Details</a>
                             </div>
                         </div>
                     </div>

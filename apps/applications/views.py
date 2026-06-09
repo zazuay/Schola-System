@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.db import IntegrityError, transaction
+import datetime # Added for the mock notification logic
 
 from .models import Application, Document
 from .forms import ApplicationForm, DocumentForm
@@ -85,6 +86,47 @@ def status_view(request):
         'accepted_count': accepted_count,
         'rejected_count': rejected_count,
     })
+
+# --- NEW VIEW ADDED HERE ---
+@student_required
+def notifications_view(request):
+    """Student: view notifications regarding their applications."""
+    # This is mock data mimicking the structure the template expects.
+    # In the future, query a Notification model here instead.
+    user_notifications = [
+        {
+            'is_read': False,
+            'type': 'document',
+            'message': 'Your document submission for <span class="notif-highlight">International Excellence Grant</span> has been verified.',
+            'created_at': datetime.datetime.now() - datetime.timedelta(minutes=10),
+            'action_url': '/applications/status/', # Or generate via reverse()
+            'action_text': 'Track Progress'
+        },
+        {
+            'is_read': True,
+            'type': 'success',
+            'message': 'Congratulations! You have passed the interview stage for the <span class="notif-highlight">STEM Innovation Award</span>.',
+            'created_at': datetime.datetime.now() - datetime.timedelta(hours=2),
+            'action_url': '',
+            'action_text': ''
+        }
+    ]
+    
+    return render(request, 'applications/notifications.html', {
+        'notifications': user_notifications
+    })
+
+@student_required
+def mark_all_read_view(request):
+    """Student: Mark all notifications as read (Dummy endpoint for now)"""
+    if request.method == 'POST':
+        # In the future, you will run a database query here to mark them read
+        # e.g., Notification.objects.filter(user=request.user).update(is_read=True)
+        pass
+    
+    return redirect('applications:notifications')
+
+# --- END NEW VIEW ---
 
 
 # ---------- Admin Views ----------

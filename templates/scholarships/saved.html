@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schola - Saved Scholarships</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/saved.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard1.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+</head>
+<body>
+
+    <div id="sidebar-placeholder"></div>
+    <div id="navbar-placeholder"></div>
+
+    <section class="saved-hero reveal-load">
+        <div class="saved-hero-container">
+            <div class="saved-hero-text">
+                <h1 class="saved-hero-title">Saved Scholarships</h1>
+                <p class="saved-hero-desc">Keep track of scholarship opportunities you're interested in and apply when ready. Your future starts here.</p>
+                
+                <div class="saved-search-wrapper">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" placeholder="Search saved scholarships...">
+                </div>
+            </div>
+            <div class="saved-hero-mascot">
+                <img src="{% static 'assets/saved_mascot.png' %}" alt="Schola Mascot" class="mascot-img">
+            </div>
+        </div>
+    </section>
+
+    <main class="container saved-main-content">
+        
+        <div class="stats-grid reveal-load">
+            <div class="stat-box">
+                <span class="stat-label">Total Saved</span>
+                <span class="stat-number">4</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-label">Upcoming Deadlines</span>
+                <span class="stat-number">3</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-label">Fully Funded</span>
+                <span class="stat-number">2</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-label">Recently Added</span>
+                <span class="stat-number">1</span>
+            </div>
+        </div>
+
+        <div class="saved-layout-split">
+            
+            <div class="saved-content-left reveal-on-scroll">
+                
+                <div class="filter-tags-row">
+                    <div class="tags-group">
+                        <button class="tag-btn active">All</button>
+                        <button class="tag-btn">Fully Funded</button>
+                        <button class="tag-btn">Bachelor</button>
+                        <button class="tag-btn">Master</button>
+                        <button class="tag-btn">International</button>
+                        <button class="tag-btn">STEM</button>
+                    </div>
+                    <div class="sort-dropdown-wrapper">
+                        <select class="sort-select">
+                            <option>Latest Saved</option>
+                            <option>Closest Deadline</option>
+                            <option>Highest Amount</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="saved-scholarship-container-grid">
+                    
+                    <div class="card-scholarship">
+                        <div class="card-top-row">
+                            <span class="tag-category">STEM</span>
+                            <button class="btn-bookmark bookmark-toggle active">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <h3 class="card-title">Global Excellence Scholarship 2024</h3>
+                        <div class="card-meta-group">
+                            <span class="meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                                Netherlands
+                            </span>
+                            <span class="meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                Ends Dec 15
+                            </span>
+                        </div>
+                        <p class="card-desc">A prestigious engineering and technology fund open for top international minds...</p>
+                        <div class="card-footer-row">
+                            <span class="card-amount">Rp75.000.000 Total</span>
+                            <a href="detail1.html" class="btn-detail">Apply Now</a>
+                        </div>
+                    </div>
+
+                    <div class="card-scholarship">
+                        <div class="card-top-row">
+                            <span class="tag-category">BUSINESS</span>
+                            <button class="btn-bookmark bookmark-toggle active">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <h3 class="card-title">Leaders of Tomorrow Fellowship</h3>
+                        <div class="card-meta-group">
+                            <span class="meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                                United Kingdom
+                            </span>
+                            <span class="meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                Ends Jan 30
+                            </span>
+                        </div>
+                        <p class="card-desc">Empowering future global leaders with full tuition support and monthly management allowances...</p>
+                        <div class="card-footer-row">
+                            <span class="card-amount">Full Tuition</span>
+                            <a href="detail6.html" class="btn-detail">Apply Now</a>
+                        </div>
+                    </div>
+
+                    <div class="card-scholarship">
+                        <div class="card-top-row">
+                            <span class="tag-category">FULL RIDE</span>
+                            <button class="btn-bookmark bookmark-toggle active">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <h3 class="card-title">The Fulbright Merit Grant</h3>
+                        <div class="card-meta-group">
+                            <span class="meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                                USA
+                            </span>
+                            <span class="meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                Ends Feb 20
+                            </span>
+                        </div>
+                        <p class="card-desc">One of the most prestigious fully funded fellowships for postgraduate studies in America...</p>
+                        <div class="card-footer-row">
+                            <span class="card-amount">Fully Funded</span>
+                            <a href="detail2.html" class="btn-detail">Apply Now</a>
+                        </div>
+                    </div>
+
+                    <div class="card-scholarship">
+                        <div class="card-top-row">
+                            <span class="tag-category">HUMANITIES</span>
+                            <button class="btn-bookmark bookmark-toggle active">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <h3 class="card-title">Global Ethics Scholarship</h3>
+                        <div class="card-meta-group">
+                            <span class="meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                                United Kingdom
+                            </span>
+                            <span class="meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                Ends Jan 12
+                            </span>
+                        </div>
+                        <p class="card-desc">A unique opportunity for philosophy and sociology students to engage...</p>
+                        <div class="card-footer-row">
+                            <span class="card-amount">Rp20.000.000 / Stipend</span>
+                            <a href="detail4.html" class="btn-detail">Apply Now</a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="saved-content-right">
+                
+                <div class="widget-box closing-soon-widget">
+                    <h3 class="widget-title">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        Closing Soon
+                    </h3>
+                    <div class="widget-list">
+                        <div class="closing-item alert-bg">
+                            <div class="closing-item-info">
+                                <h4>MIT Open Scholarship</h4>
+                                <p>Deadline: Nov 15</p>
+                                <span class="time-left text-alert">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+                                    3 Days Left
+                                </span>
+                            </div>
+                        </div>
+                        <div class="closing-item">
+                            <div class="closing-item-info">
+                                <h4>Stanford AI Research</h4>
+                                <p>Deadline: Nov 22</p>
+                                <span class="time-left">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                    10 Days Left
+                                </span>
+                            </div>
+                        </div>
+                        <div class="closing-item">
+                            <div class="closing-item-info">
+                                <h4>Chevening Awards</h4>
+                                <p>Deadline: Dec 01</p>
+                                <span class="time-left">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                    19 Days Left
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn-view-all-widget">View All Upcoming</a>
+                </div>
+
+                <div class="widget-box newsletter-widget">
+                    <h3 class="widget-title">Stay Updated with Scholarship Opportunities</h3>
+                    <p class="widget-desc">Weekly digests of the best funding opportunities tailored to your profile.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input">
+                        <button class="btn-subscribe">Subscribe</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Global functions untuk dipanggil langsung dari element HTML (menghindari masalah async load)
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            if (sidebar && overlay) {
+                sidebar.classList.toggle('active');
+                overlay.classList.toggle('active');
+            }
+        }
+
+        function loadComponent(id, url) {
+            return fetch(url)
+                .then(response => {
+                    if (!response.ok) throw new Error(`Gagal memuat ${url}`);
+                    return response.text();
+                })
+                .then(data => { 
+                    document.getElementById(id).innerHTML = data; 
+                    
+                    let verifyElementsExist = setInterval(() => {
+                        const iconButtons = document.querySelectorAll('.nav-icon-btn');
+                        const items = document.querySelectorAll('.nav-link, .sidebar-link, .logo, .navbar-brand, .logo-container a');
+                        
+                        if (items.length > 0) {
+                            clearInterval(verifyElementsExist);
+
+                            if (iconButtons.length >= 2) {
+                                iconButtons[0].setAttribute('onclick', "window.location.href='notifications.html'");
+                                iconButtons[1].setAttribute('onclick', "window.location.href='student_profile.html'");
+                            }
+
+                            // Daftarkan event listener buka/tutup langsung setelah komponen ter-render
+                            const trigger = document.getElementById('sidebarTrigger');
+                            if (trigger) {
+                                trigger.setAttribute('onclick', 'toggleSidebar()');
+                            }
+                            
+                            const closeBtn = document.getElementById('sidebarClose');
+                            if (closeBtn) {
+                                closeBtn.setAttribute('onclick', 'toggleSidebar()');
+                            }
+                            
+                            const overlay = document.getElementById('sidebarOverlay');
+                            if (overlay) {
+                                overlay.setAttribute('onclick', 'toggleSidebar()');
+                            }
+
+                            items.forEach(link => {
+                                const linkText = link.textContent.trim().toLowerCase();
+                                
+                                if (
+                                    link.innerHTML.includes('img') || 
+                                    link.classList.contains('logo') || 
+                                    link.classList.contains('sidebar-logo') ||
+                                    linkText === ''
+                                ) {
+                                    link.setAttribute('href', '../index.html');
+                                    link.classList.remove('active');
+                                }
+
+                                if (linkText.includes('resource')) {
+                                    link.setAttribute('href', 'student_resources.html');
+                                    link.classList.remove('active');
+                                } else if (linkText.includes('scholarship')) {
+                                    link.setAttribute('href', '../index.html');
+                                    link.classList.remove('active');
+                                } else if (linkText.includes('application') || linkText.includes('my app')) {
+                                    link.setAttribute('href', 'student_myapplications.html');
+                                    link.classList.remove('active');
+                                } else if (linkText.includes('notification')) {
+                                    link.setAttribute('href', 'notifications.html');
+                                    link.classList.remove('active');
+                                } else if (linkText.includes('profile')) {
+                                    link.setAttribute('href', 'student_profile.html');
+                                    link.classList.remove('active');
+                                } else if (linkText.includes('saved')) {
+                                    link.setAttribute('href', 'student_saved.html');
+                                    link.classList.add('active');
+                                }
+                            });
+                        }
+                    }, 30);
+                })
+                .catch(err => console.error(err));
+        }
+
+        Promise.all([
+            loadComponent('sidebar-placeholder', 'student_sidebar.html'),
+            loadComponent('navbar-placeholder', 'student_navbar.html'),
+            loadComponent('footer-placeholder', 'student_footer.html')
+        ]).then(() => {
+            // Jika ada file navbar.js eksternal yang di-load belakangan
+            const navScript = document.createElement('script');
+            navScript.src = "{% static 'js/navbar.js' %}"; 
+            document.body.appendChild(navScript);
+
+            document.querySelectorAll('.bookmark-toggle').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.classList.toggle('active');
+                    const icon = this.querySelector('svg');
+                    if(this.classList.contains('active')) {
+                        icon.setAttribute('fill', 'currentColor');
+                    } else {
+                        icon.setAttribute('fill', 'none');
+                    }
+                });
+            });
+
+            document.querySelectorAll('.tag-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.tag-btn').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+
+        const scrollObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { root: null, threshold: 0.05 });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => scrollObserver.observe(el));
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal-load').forEach(el => el.classList.add('revealed'));
+        });
+      
+    </script>
+</body>
+</html>

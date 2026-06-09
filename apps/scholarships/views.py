@@ -16,8 +16,13 @@ def scholarship_list(request):
     country = request.GET.get('country', '')
     level = request.GET.get('level', '')
 
+    from django.db.models import Q
+
     if q:
-        qs = qs.filter(name__icontains=q) | qs.filter(provider__icontains=q)
+        qs = qs.filter(
+            Q(name__icontains=q) |
+            Q(provider__icontains=q)
+        )
 
     if country:
         qs = qs.filter(country__icontains=country)

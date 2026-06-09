@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schola - Notifications</title>
+    
+    <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/myapp.css' %}">
+    <link rel="stylesheet" href="{% static 'css/notifications.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+</head>
+<body>
+
+    {% include 'partials/student_sidebar.html' %}
+    {% include 'partials/student_navbar.html' %}
+
+    <main class="notifications-container reveal-load">
+        <div class="notif-header-section">
+            <div class="notif-title-block">
+                <h1 class="notif-page-title">Notifications</h1>
+                <p class="notif-page-subtitle">Stay updated with your scholarship application progress and announcements.</p>
+            </div>
+            
+            <form method="POST" action="{% url 'applications:mark_all_read' %}" style="margin: 0;">
+                {% csrf_token %}
+                <button type="submit" class="btn-mark-read">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Mark all as read
+                </button>
+            </form>
+        </div>
+
+        <div class="notif-list">
+            
+            {% for notification in notifications %}
+            <div class="notif-item {% if not notification.is_read %}unread{% endif %} reveal-on-scroll">
+                
+                {% if not notification.is_read %}
+                <div class="notif-status-indicator"></div>
+                {% endif %}
+
+                <div class="notif-icon-wrapper">
+                    {% if notification.type == 'document' %}
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                    {% elif notification.type == 'success' %}
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    {% else %}
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                    {% endif %}
+                </div>
+
+                <div class="notif-content">
+                    <div class="notif-body">
+                        <p class="notif-text">{{ notification.message|safe }}</p>
+                        <span class="notif-time">{{ notification.created_at|timesince }} ago</span>
+                    </div>
+                    
+                    {% if notification.action_url %}
+                    <div class="notif-actions">
+                        <a href="{{ notification.action_url }}" class="btn-notif-action primary">
+                            {{ notification.action_text|default:"View Details" }}
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% empty %}
+            <div style="text-align: center; padding: 60px 20px; color: #64748B;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom: 16px; opacity: 0.5;">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+                <h3>You're all caught up!</h3>
+                <p>You have no new notifications at this time.</p>
+            </div>
+            {% endfor %}
+
+        </div>
+    </main>
+
+    {% include 'partials/student_footer.html' %}
+
+    <script src="{% static 'js/navbar.js' %}"></script>
+    <script>
+        // Scroll Reveal Animations
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const scrollObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(element => scrollObserver.observe(element));
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal-load').forEach(element => element.classList.add('revealed'));
+        });
+    </script>
+</body>
+</html>

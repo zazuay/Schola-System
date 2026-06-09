@@ -1,16 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schola - Student Dashboard</title>
-    {% load static %}
-    <link rel="stylesheet" href="css/variables.css' %">
-    <link rel="stylesheet" href="css/styles.css' %">
-    <link rel="stylesheet" href="css/navbar.css' %">
-    <link rel="stylesheet" href="css/sidebar.css' %">
-    <link rel="stylesheet" href="css/dashboard1.css' %">
-    <link rel="stylesheet" href="css/footer.css' %">
+
+    <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
 </head>
 <body>
 
@@ -29,7 +30,7 @@
         <div class="sidebar-content">
             <div class="sidebar-brand-group">
                 <a href="#" class="sidebar-logo">
-                    <img src="Assets_Sofeng/logo.png' %}" alt="Schola Logo">
+                    <img src="{% static 'Assets_Sofeng/logo.png' %}" alt="Schola Logo">
                 </a>
             </div>
 
@@ -92,7 +93,9 @@
 
     <section class="hero-section">
 
-        <div class="hero-bg" style="background-image: url('Assets_Sofeng/dashboard_hero.jpg');"></div>
+        <div class="hero-bg"
+            style="background-image: url('{% static '../assets/dashboard_hero.jpg' %}');">
+        </div>
 
         <div class="hero-overlay"></div>
 
@@ -122,87 +125,84 @@
     </section>
 
     <section class="filter-section">
-
         <div class="filter-container">
+            <form method="GET">
 
-            <div class="search-box-wrapper">
+                <div class="search-box-wrapper">
 
-                <span class="search-title">
-                    Search Scholarships
-                </span>
+                    <span class="search-title">
+                        Search Scholarships
+                    </span>
 
-                <div class="search-input-group">
+                    <div class="search-input-group">
 
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
 
-                    <input type="text" placeholder="e.g. STEM, Arts">
+                        <input
+                            type="text"
+                            name="q"
+                            value="{{ q }}"
+                            placeholder="e.g. STEM, Arts">
+
+                    </div>
 
                 </div>
-            </div>
 
-            <div class="filter-selectors-grid">
+                <div class="filter-selectors-grid">
 
-                <div class="selector-item">
-                    <span class="selector-label">Deadline</span>
+                    <div class="selector-item">
+                        <span class="selector-label">Academic Level</span>
 
-                    <select>
-                        <option>Any Time</option>
-                        <option>4 July, 2026</option>
-                        <option>15 August, 2026</option>
-                        <option>1 September, 2026</option>
-                        <option>20 October, 2026</option>
-                    </select>
+                        <select name="level">
+                            <option value="">All Levels</option>
+                            <option value="High School">High School</option>
+                            <option value="Undergraduate">Undergraduate</option>
+                            <option value="Master">Master Degree</option>
+                            <option value="Doctoral">Doctoral Degree</option>
+                        </select>
+                    </div>
+
+                    <div class="selector-item">
+                        <span class="selector-label">Country</span>
+
+                        <select name="country">
+                            <select name="country">
+                                <option value="">Any Country</option>
+
+                                {% for country in countries %}
+                                    <option value="{{ country }}">
+                                        {{ country }}
+                                    </option>
+                                {% endfor %}
+
+                            </select>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-apply-filter">
+
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="4" y1="21" x2="4" y2="14"></line>
+                            <line x1="4" y1="10" x2="4" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12" y2="3"></line>
+                            <line x1="20" y1="21" x2="20" y2="16"></line>
+                            <line x1="20" y1="12" x2="20" y2="3"></line>
+                        </svg>
+
+                        Apply Filters
+
+                    </button>
+
                 </div>
 
-                <div class="selector-item">
-                    <span class="selector-label">Academic Level</span>
+            </form>
 
-                    <select>
-                        <option>All Levels</option>
-                        <option>High School</option>
-                        <option>Undergraduate</option>
-                        <option>Master Degree</option>
-                        <option>Doctoral Degree</option>
-                    </select>
-                </div>
-
-                <div class="selector-item">
-                    <span class="selector-label">Country</span>
-
-                    <select>
-                        <option>Any Country</option>
-                        <option>United States</option>
-                        <option>Germany</option>
-                        <option>Canada</option>
-                        <option>Japan</option>
-                        <option>Australia</option>
-                        <option>France</option>
-                    </select>
-                </div>
-
-                <button class="btn-apply-filter">
-
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="4" y1="21" x2="4" y2="14"></line>
-                        <line x1="4" y1="10" x2="4" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="12"></line>
-                        <line x1="12" y1="8" x2="12" y2="3"></line>
-                        <line x1="20" y1="21" x2="20" y2="16"></line>
-                        <line x1="20" y1="12" x2="20" y2="3"></line>
-                        <line x1="1" y1="14" x2="7" y2="14"></line>
-                        <line x1="9" y1="8" x2="15" y2="8"></line>
-                        <line x1="17" y1="16" x2="23" y2="16"></line>
-                    </svg>
-
-                    Apply Filters
-
-                </button>
-
-            </div>
         </div>
+
     </section>
 
     <main class="container dashboard-main">
@@ -226,15 +226,17 @@
 
             <div class="scholarship-grid">
 
+                {% for scholarship in scholarships %}
+
                 <div class="card-scholarship">
 
                     <div class="card-top-row">
 
                         <span class="tag-category">
-                            EDUCATION
+                            {{ scholarship.get_level_display }}
                         </span>
 
-                        <button class="btn-bookmark active">
+                        <button class="btn-bookmark">
 
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
                                 <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
@@ -245,7 +247,7 @@
                     </div>
 
                     <h3 class="card-title">
-                        International Excellence Grant
+                        {{ scholarship.name }}
                     </h3>
 
                     <div class="card-meta-group">
@@ -255,13 +257,10 @@
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <path d="M2 12h20"></path>
-                                <!-- <path d="M12 2a15 15 0 0 1 0 20"></path> -->
                                 <path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"></path>
                             </svg>
 
-                            
-
-                            Germany
+                            {{ scholarship.country }}
 
                         </span>
 
@@ -274,23 +273,24 @@
                                 <line x1="3" y1="10" x2="21" y2="10"></line>
                             </svg>
 
-                            Oct 15, 2026
+                            {{ scholarship.deadline|date:"M d, Y" }}
 
                         </span>
 
                     </div>
 
                     <p class="card-desc">
-                        A prestigious scholarship for high-achieving international students...
+                        Provider: {{ scholarship.provider }}
                     </p>
 
                     <div class="card-footer-row">
 
                         <span class="card-amount">
-                            Up to Rp5.000.000 / Year
+                            {{ scholarship.provider }}
                         </span>
 
-                        <a href="detail1.html" class="btn-detail">
+                        <a href="{% url 'scholarships:detail' scholarship.pk %}"
+                        class="btn-detail">
                             View Detail
                         </a>
 
@@ -298,7 +298,16 @@
 
                 </div>
 
+                {% empty %}
+
+                <div class="card-scholarship">
+                    <h3>No scholarships found.</h3>
+                </div>
+
+                {% endfor %}
+
             </div>
+
 
         </section>
 
