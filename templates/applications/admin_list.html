@@ -28,20 +28,20 @@
 
         <div class="sidebar-content">
             <div class="sidebar-brand-group">
-                <a href="{% url 'admin_dashboard' %}" class="sidebar-logo" id="sidebarLogo">
+                <a href="#" class="sidebar-logo" id="sidebarLogo">
                     <img src="{% static 'assets/logo_admin.png' %}" alt="Schola Admin Logo">
                 </a>
             </div>
 
             <nav class="sidebar-nav">
-                <a href="{% url 'admin_management' %}" class="sidebar-link {% if 'management' in request.path %}active{% endif %}">Scholarship Management</a>
-                <a href="{% url 'admin_applicant_list' %}" class="sidebar-link {% if 'applicant' in request.path %}active{% endif %}">Applicants</a>
-                <a href="{% url 'admin_profile' %}" class="sidebar-link {% if 'profile' in request.path %}active{% endif %}">Profile</a>
+                <a href="{% url 'scholarships:admin_list' %}" class="sidebar-link {% if 'management' in request.path %}active{% endif %}">Scholarship Management</a>
+                <a href="{% url 'applications:admin_list' %}" class="sidebar-link {% if 'applicant' in request.path %}active{% endif %}">Applicants</a>
+                <a href="{% url 'users:profile' %}" class="sidebar-link {% if 'profile' in request.path %}active{% endif %}">Profile</a>
             </nav>
         </div>
 
         <div class="sidebar-footer">
-            <a href="{% url 'admin_scholarship_add' %}" class="btn-find-scholarships">Create New Scholarship</a>
+            <a href="{% url 'scholarships:create' %}" class="btn-find-scholarships">Create New Scholarship</a>
         </div>
     </aside>
 
@@ -51,12 +51,12 @@
                 <button class="menu-toggle" id="sidebarToggle">
                     <span class="bar"></span><span class="bar"></span><span class="bar"></span>
                 </button>
-                <a href="{% url 'admin_dashboard' %}" class="logo active">
+                <a href="#" class="logo active">
                     <img src="{% static 'assets/logo_admin.png' %}" alt="Schola Admin Logo">
                 </a>
                 <div class="admin-search-wrapper">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                    <form action="{% url 'admin_applicant_list' %}" method="GET" style="width: 100%;">
+                    <form action="{% url 'applications:admin_list' %}" method="GET" style="width: 100%;">
                         <input type="text" name="q" placeholder="Search applications, students, or awards..." value="{{ request.GET.q }}">
                     </form>
                 </div>

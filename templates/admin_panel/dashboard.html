@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schola Admin - Dashboard</title>
-    <link rel="stylesheet" href="../css/variables.css">
-    <link rel="stylesheet" href="../css/sidebar.css"> <link rel="stylesheet" href="../admin_css/navbar.css">
-    <link rel="stylesheet" href="../admin_css/dashboard.css">
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}"> <link rel="stylesheet" href="{% static 'admin_css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'admin_css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
 </head>
 <body>
 
@@ -26,15 +26,15 @@
 
         <div class="sidebar-content">
             <div class="sidebar-brand-group">
-                <a href="dashboard.html" class="sidebar-logo" id="sidebarLogo">
+                <a href="#" class="sidebar-logo" id="sidebarLogo">
                     <img src="{% static 'assets/logo_admin.png' %}" alt="Schola Admin Logo">
                 </a>
             </div>
 
             <nav class="sidebar-nav">
-                <a href="{% url 'scholarships:management' %}" class="sidebar-link {% if request.resolver_match.url_name == 'management' %}active{% endif %}">Scholarship Management</a>
+                <a href="{% url 'scholarships:admin_list' %}" class="sidebar-link {% if request.resolver_match.url_name == 'management' %}active{% endif %}">Scholarship Management</a>
                 <a href="{% url 'applications:admin_list' %}" class="sidebar-link {% if request.resolver_match.url_name == 'admin_list' %}active{% endif %}">Applicants</a>
-                <a href="{% url 'accounts:profile' %}" class="sidebar-link {% if request.resolver_match.url_name == 'profile' %}active{% endif %}">Profile</a>
+                <a href="{% url 'users:profile' %}" class="sidebar-link {% if request.resolver_match.url_name == 'profile' %}active{% endif %}">Profile</a>
             </nav>
         </div>
 

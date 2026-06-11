@@ -111,7 +111,7 @@
                         <p class="card-desc">A prestigious engineering and technology fund open for top international minds...</p>
                         <div class="card-footer-row">
                             <span class="card-amount">Rp75.000.000 Total</span>
-                            <a href="detail1.html" class="btn-detail">Apply Now</a>
+                            <a href="{% url 'scholarships:detail' <pk> %}" class="btn-detail">Apply Now</a>
                         </div>
                     </div>
 
@@ -143,7 +143,7 @@
                         <p class="card-desc">Empowering future global leaders with full tuition support and monthly management allowances...</p>
                         <div class="card-footer-row">
                             <span class="card-amount">Full Tuition</span>
-                            <a href="detail6.html" class="btn-detail">Apply Now</a>
+                            <a href="{% url 'scholarships:detail' <pk> %}" class="btn-detail">Apply Now</a>
                         </div>
                     </div>
 
@@ -175,7 +175,7 @@
                         <p class="card-desc">One of the most prestigious fully funded fellowships for postgraduate studies in America...</p>
                         <div class="card-footer-row">
                             <span class="card-amount">Fully Funded</span>
-                            <a href="detail2.html" class="btn-detail">Apply Now</a>
+                            <a href="{% url 'scholarships:detail' <pk> %}" class="btn-detail">Apply Now</a>
                         </div>
                     </div>
 
@@ -207,7 +207,7 @@
                         <p class="card-desc">A unique opportunity for philosophy and sociology students to engage...</p>
                         <div class="card-footer-row">
                             <span class="card-amount">Rp20.000.000 / Stipend</span>
-                            <a href="detail4.html" class="btn-detail">Apply Now</a>
+                            <a href="{% url 'scholarships:detail' <pk> %}" class="btn-detail">Apply Now</a>
                         </div>
                     </div>
 
@@ -302,8 +302,8 @@
                             clearInterval(verifyElementsExist);
 
                             if (iconButtons.length >= 2) {
-                                iconButtons[0].setAttribute('onclick', "window.location.href='notifications.html'");
-                                iconButtons[1].setAttribute('onclick', "window.location.href='student_profile.html'");
+                                iconButtons[0].setAttribute('onclick', "window.location.href='{% url 'applications:notifications' %}'");
+                                iconButtons[1].setAttribute('onclick', "window.location.href='{% url 'users:profile' %}'");
                             }
 
                             // Daftarkan event listener buka/tutup langsung setelah komponen ter-render

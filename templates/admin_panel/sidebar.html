@@ -25,20 +25,20 @@
 
         <div class="sidebar-content">
             <div class="sidebar-brand-group">
-                <a href="{% url 'dashboard' %}" class="sidebar-logo" id="sidebarLogo">
+                <a href="#" class="sidebar-logo" id="sidebarLogo">
                     <img src="{% static 'assets/logo_admin.png' %}" alt="Schola Admin Logo">
                 </a>
             </div>
 
             <nav class="sidebar-nav">
-                <a href="{% url 'management' %}" class="sidebar-link">Scholarship Management</a>
-                <a href="{% url 'applicant_list' %}" class="sidebar-link">Applicants</a>
-                <a href="{% url 'profile' %}" class="sidebar-link">Profile</a>
+                <a href="{% url 'scholarships:admin_list' %}" class="sidebar-link">Scholarship Management</a>
+                <a href="{% url 'applications:admin_list' %}" class="sidebar-link">Applicants</a>
+                <a href="{% url 'users:profile' %}" class="sidebar-link">Profile</a>
             </nav>
         </div>
 
         <div class="sidebar-footer">
-            <a href="{% url 'add_edit_scholarship' %}" class="btn-find-scholarships">Create New Scholarship</a>
+            <a href="{% url 'scholarships:create' %}" class="btn-find-scholarships">Create New Scholarship</a>
         </div>
     </aside>
 
@@ -56,7 +56,7 @@
                 link.classList.remove("active");
             });
 
-            const dashboardUrl = "{% url 'dashboard' %}";
+            const dashboardUrl = "#";
             if (currentPath === dashboardUrl || currentPath === "/") {
                 logoElement.classList.add("active");
             }

@@ -40,7 +40,7 @@
                 <h2 class="res-section-title">Explore by Category</h2>
                 <div class="res-category-grid">
                     
-                    <a href="{% url 'article_detail' %}?category=guides" class="category-card" style="text-decoration: none; color: inherit; display: block;">
+                    <a href="{% url 'resources:article_detail' %}?category=guides" class="category-card" style="text-decoration: none; color: inherit; display: block;">
                         <div class="cat-icon-badge">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
                         </div>
@@ -48,7 +48,7 @@
                         <p>Step-by-step breakdowns of standard application steps.</p>
                     </a>
 
-                    <a href="{% url 'article_detail' %}?category=templates" class="category-card" style="text-decoration: none; color: inherit; display: block;">
+                    <a href="{% url 'resources:article_detail' %}?category=templates" class="category-card" style="text-decoration: none; color: inherit; display: block;">
                         <div class="cat-icon-badge">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                         </div>
@@ -56,7 +56,7 @@
                         <p>Professional layouts tailored to academic achievements.</p>
                     </a>
 
-                    <a href="{% url 'article_detail' %}?category=interview" class="category-card" style="text-decoration: none; color: inherit; display: block;">
+                    <a href="{% url 'resources:article_detail' %}?category=interview" class="category-card" style="text-decoration: none; color: inherit; display: block;">
                         <div class="cat-icon-badge">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                         </div>
@@ -64,7 +64,7 @@
                         <p>Common questions asked by selection committees.</p>
                     </a>
 
-                    <a href="{% url 'article_detail' %}?category=faqs" class="category-card" style="text-decoration: none; color: inherit; display: block;">
+                    <a href="{% url 'resources:article_detail' %}?category=faqs" class="category-card" style="text-decoration: none; color: inherit; display: block;">
                         <div class="cat-icon-badge">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                         </div>
@@ -72,7 +72,7 @@
                         <p>Clear responses covering eligibility questions and technical issues.</p>
                     </a>
 
-                    <a href="{% url 'article_detail' %}?category=stories" class="category-card" style="text-decoration: none; color: inherit; display: block;">
+                    <a href="{% url 'resources:article_detail' %}?category=stories" class="category-card" style="text-decoration: none; color: inherit; display: block;">
                         <div class="cat-icon-badge">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                         </div>
@@ -80,7 +80,7 @@
                         <p>Inspirational journeys and tactics from verified alumni scholars.</p>
                     </a>
 
-                    <a href="{% url 'article_detail' %}?category=webinars" class="category-card" style="text-decoration: none; color: inherit; display: block;">
+                    <a href="{% url 'resources:article_detail' %}?category=webinars" class="category-card" style="text-decoration: none; color: inherit; display: block;">
                         <div class="cat-icon-badge">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                         </div>
@@ -94,7 +94,7 @@
             <section class="res-block-section reveal-on-scroll">
                 <div class="res-section-header">
                     <h2 class="res-section-title">Featured Articles</h2>
-                    <a href="{% url 'articles_list' %}" class="res-view-all">View All Articles &rarr;</a>
+                    <a href="{% url 'resources:article_list' %}" class="res-view-all">View All Articles &rarr;</a>
                 </div>
                 <div class="res-articles-grid">
                     {% for article in featured_articles %}
@@ -107,44 +107,44 @@
                             <span class="article-time">{{ article.read_time }} min read</span>
                             <h3>{{ article.title }}</h3>
                             <p>{{ article.excerpt }}</p>
-                            <a href="{% url 'article_detail' article.id %}" class="article-link">Read More &rarr;</a>
+                            <a href="{% url 'resources:article_detail' article.id %}" class="article-link">Read More &rarr;</a>
                         </div>
                     </div>
                     {% empty %}
                     <div class="article-card">
                         <div class="article-img-wrapper">
-                            <img src="{% static 'Assets_Sofeng/res_artic1.jpg' %}" alt="Writing Motivation Letter">
+                            <img src="{% static 'assets/res_artic1.jpg' %}" alt="Writing Motivation Letter">
                             <span class="article-tag">GUIDE</span>
                         </div>
                         <div class="article-info">
                             <span class="article-time">5 min read</span>
                             <h3>How to Write a Winning Motivation Letter</h3>
                             <p>A systematic framework detailing structure and tone to hook reviewers from your very first paragraph.</p>
-                            <a href="{% url 'article_detail' %}?category=guides" class="article-link">Read More &rarr;</a>
+                            <a href="{% url 'resources:article_detail' %}?category=guides" class="article-link">Read More &rarr;</a>
                         </div>
                     </div>
                     <div class="article-card">
                         <div class="article-img-wrapper">
-                            <img src="{% static 'Assets_Sofeng/res_artic2.png' %}" alt="Laptop Typing Workspace">
+                            <img src="{% static 'assets/res_artic2.png' %}" alt="Laptop Typing Workspace">
                             <span class="article-tag">TIPS</span>
                         </div>
                         <div class="article-info">
                             <span class="article-time">8 min read</span>
                             <h3>Top Mistakes in Scholarship Applications</h3>
                             <p>Avoid self-sabotaging faults that push down selection rates. Learn what critical factors committees look for.</p>
-                            <a href="{% url 'article_detail' %}?category=guides" class="article-link">Read More &rarr;</a>
+                            <a href="{% url 'resources:article_detail' %}?category=guides" class="article-link">Read More &rarr;</a>
                         </div>
                     </div>
                     <div class="article-card">
                         <div class="article-img-wrapper">
-                            <img src="{% static 'Assets_Sofeng/res_artic3.jpg' %}" alt="Interview Setting Simulation">
+                            <img src="{% static 'assets/res_artic3.jpg' %}" alt="Interview Setting Simulation">
                             <span class="article-tag">INTERVIEW</span>
                         </div>
                         <div class="article-info">
                             <span class="article-time">6 min read</span>
                             <h3>Preparing for Scholarship Interviews</h3>
                             <p>Master the art of answering situational prompts. Build confidence by practicing core frameworks before panels.</p>
-                            <a href="{% url 'article_detail' %}?category=interview" class="article-link">Read More &rarr;</a>
+                            <a href="{% url 'resources:article_detail' %}?category=interview" class="article-link">Read More &rarr;</a>
                         </div>
                     </div>
                     {% endfor %}
@@ -161,7 +161,7 @@
                         </div>
                         <h3>{{ template.title }}</h3>
                         <p>{{ template.description }}</p>
-                        <button class="btn-download-res" onclick="window.location.href='{% url 'download_template' template.id %}'">Download {{ template.format|upper }}</button>
+                        <button class="btn-download-res" onclick="window.location.href='{% url 'resources:download_template' template.id %}'">Download {{ template.format|upper }}</button>
                     </div>
                     {% empty %}
                     <div class="template-card">
@@ -170,7 +170,7 @@
                         </div>
                         <h3>Academic CV Template</h3>
                         <p>Optimized structural layout showcasing publications, grade marks, and relevant community activities directly.</p>
-                        <button class="btn-download-res" onclick="window.location.href='{% url 'article_detail' %}?category=templates'">Download PDF</button>
+                        <button class="btn-download-res" onclick="window.location.href='{% url 'resources:article_detail' %}?category=templates'">Download PDF</button>
                     </div>
                     <div class="template-card">
                         <div class="template-icon">
@@ -178,7 +178,7 @@
                         </div>
                         <h3>Recommendation Letter</h3>
                         <p>Provide professional references with an adaptive template format focused heavily on merit indicators.</p>
-                        <button class="btn-download-res" onclick="window.location.href='{% url 'article_detail' %}?category=templates'">Download DOCX</button>
+                        <button class="btn-download-res" onclick="window.location.href='{% url 'resources:article_detail' %}?category=templates'">Download DOCX</button>
                     </div>
                     <div class="template-card">
                         <div class="template-icon">
@@ -186,7 +186,7 @@
                         </div>
                         <h3>Study Plan Template</h3>
                         <p>Clear structure maps academic targets, timeline tracks, and research intents for overseas applications.</p>
-                        <button class="btn-download-res" onclick="window.location.href='{% url 'article_detail' %}?category=templates'">Download PDF</button>
+                        <button class="btn-download-res" onclick="window.location.href='{% url 'resources:article_detail' %}?category=templates'">Download PDF</button>
                     </div>
                     {% endfor %}
                 </div>
@@ -245,7 +245,7 @@
                     <div class="help-center-info">
                         <h2>Still need help?</h2>
                         <p>Our global mentor panel handles custom essay tracking or strategic layout modifications to adjust application postures efficiently.</p>
-                        <button class="btn-talk-advisor" onclick="window.location.href='{% url 'advisor' %}'">Talk to Advisor</button>
+                        <button class="btn-talk-advisor" onclick="window.location.href='#'">Talk to Advisor</button>
                     </div>
                 </div>
             </section>
@@ -298,7 +298,7 @@
                         <h2>Upcoming Live Sessions</h2>
                         <p>Join virtual interactive webinars hosted directly alongside scholarship evaluation alumni panels.</p>
                     </div>
-                    <button class="btn-view-schedule" onclick="window.location.href='{% url 'schedule' %}'">View Schedule</button>
+                    <button class="btn-view-schedule" onclick="window.location.href='#'">View Schedule</button>
                 </div>
                 <div class="live-sessions-grid">
                     {% for session in live_sessions %}
@@ -310,7 +310,7 @@
                         <div class="live-session-info">
                             <h3>{{ session.title }}</h3>
                             <p>Speaker: {{ session.speaker }} • {{ session.time }} • {{ session.focus }}</p>
-                            <button class="btn-register-live" onclick="window.location.href='{% url 'register_session' session.id %}'">Register Free</button>
+                            <button class="btn-register-live" onclick="window.location.href='#'">Register Free</button>
                         </div>
                     </div>
                     {% empty %}
@@ -322,7 +322,7 @@
                         <div class="live-session-info">
                             <h3>Mastering the DAAD Application</h3>
                             <p>Speaker: Dr. Ellen Ross • 14:00 GMT+7 • Academic Focus</p>
-                            <button class="btn-register-live" onclick="window.location.href='{% url 'article_detail' %}?category=live-daad'">Register Free</button>
+                            <button class="btn-register-live" onclick="window.location.href='{% url 'resources:article_detail' %}?category=live-daad'">Register Free</button>
                         </div>
                     </div>
                     <div class="live-session-item">
@@ -333,7 +333,7 @@
                         <div class="live-session-info">
                             <h3>Financial Aid for STEM Students</h3>
                             <p>Speaker: Prof. Alan Vance • 10:00 EST • Engineering Tracks</p>
-                            <button class="btn-register-live" onclick="window.location.href='{% url 'article_detail' %}?category=live-financial'">Register Free</button>
+                            <button class="btn-register-live" onclick="window.location.href='{% url 'resources:article_detail' %}?category=live-financial'">Register Free</button>
                         </div>
                     </div>
                     {% endfor %}
@@ -345,67 +345,6 @@
 
     <div id="footer-placeholder"></div>
 
-    <script>
-
-        function loadResourcesComponent(id, url) {
-            fetch(url)
-                .then(response => {
-                    if (!response.ok) throw new Error('HTTP failure: ' + response.status);
-                    return response.text();
-                })
-                .then(data => {
-                    document.getElementById(id).innerHTML = data;
-                    
-                    let verifyElementsExist = setInterval(() => {
-                        const iconButtons = document.querySelectorAll('.nav-icon-btn');
-                        const items = document.querySelectorAll('.nav-link, .sidebar-link, .logo, .navbar-brand, .logo-container a');
-                        
-                        if (iconButtons.length >= 2 && items.length > 0) {
-                            clearInterval(verifyElementsExist);
-
-                            iconButtons[0].setAttribute('onclick', "window.location.href='{% url 'notifications' %}'");
-                            iconButtons[1].setAttribute('onclick', "window.location.href='{% url 'student_profile' %}'");
-
-                            items.forEach(link => {
-                                const linkText = link.textContent.trim().toLowerCase();
-                                
-                                if (
-                                    link.innerHTML.includes('img') ||
-                                    link.classList.contains('logo') ||
-                                    link.classList.contains('sidebar-logo') ||
-                                    linkText === ''
-                                ) {
-                                    link.setAttribute('href', '{% url 'home' %}');
-                                    link.classList.remove('active');
-                                }
-
-                                if (linkText.includes('resource')) {
-                                    link.setAttribute('href', '{% url 'resources' %}');
-                                    link.classList.add('active');
-                                } else if (linkText.includes('scholarship')) {
-                                    link.setAttribute('href', '{% url 'home' %}');
-                                    link.classList.remove('active');
-                                } else if (linkText.includes('application') || linkText.includes('my app')) {
-                                    link.setAttribute('href', '{% url 'status' %}');
-                                    link.classList.remove('active');
-                                } else if (linkText.includes('notification')) {
-                                    link.setAttribute('href', '{% url 'notifications' %}');
-                                } else if (linkText.includes('profile')) {
-                                    link.setAttribute('href', '{% url 'profile' %}');
-                                }
-                            });
-                        }
-                    }, 30);
-                })
-                .catch(err => console.error(err));
-        }
-
-        // You will need to make sure these static files are available or replace 
-        // these calls with standard Django template inclusion: {% include 'sidebar.html' %}
-        loadResourcesComponent('sidebar-placeholder', '{% static "html/student_sidebar.html" %}');
-        loadResourcesComponent('navbar-placeholder', '{% static "html/student_navbar.html" %}');
-        loadResourcesComponent('footer-placeholder', '{% static "html/student_footer.html" %}');
-    </script>
     <script src="{% static 'js/navbar.js' %}"></script>
     <script>
         document.addEventListener('click', function(e) {
