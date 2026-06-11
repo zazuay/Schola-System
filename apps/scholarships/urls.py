@@ -7,6 +7,7 @@ urlpatterns = [
     # student
     path('',               views.scholarship_list,   name='list'),
     path('<int:pk>/',      views.scholarship_detail, name='detail'),
+    path('saved/',         views.saved_list,         name='saved'),
     # admin
     path('manage/',           views.admin_scholarship_list, name='admin_list'),
     path('manage/create/',    views.scholarship_create,     name='create'),

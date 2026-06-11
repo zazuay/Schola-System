@@ -1,0 +1,67 @@
+{% load static %}
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <button class="sidebar-close" id="sidebarClose">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5897FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+        </button>
+    </div>
+
+    <div class="sidebar-content">
+        <div class="sidebar-brand-group">
+            <a href="{% url 'scholarships:list' %}" class="sidebar-logo {% if request.path == '/' or request.path == '/dashboard/' %}active{% endif %}" id="sidebarLogo">
+                <img src="{% static 'assets/logo.png' %}" alt="Schola Logo">
+            </a>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="{% url 'applications:status' %}" class="sidebar-link {% if 'applications' in request.path %}active{% endif %}">My Applications</a>
+            <a href="{% url 'resources:list' %}" class="sidebar-link {% if 'resources' in request.path %}active{% endif %}">Resources</a>
+            <a href="{% url 'applications:notifications' %}" class="sidebar-link {% if 'notifications' in request.path %}active{% endif %}">Notification</a>
+            <a href="{% url 'users:profile' %}" class="sidebar-link {% if 'profile' in request.path %}active{% endif %}">Profile</a>
+            <a href="{% url 'scholarships:saved' %}" class="sidebar-link {% if 'saved' in request.path %}active{% endif %}">Saved</a>
+    </div>
+
+    <div class="sidebar-footer">
+        <a href="{% url 'scholarships:list' %}" class="btn-find-scholarships">Find Scholarships</a>
+    </div>
+</aside>
+
+<script>
+(function () {
+    
+    function initSidebarHoverLogic() {
+        const logo = document.getElementById("sidebarLogo");
+        const links = document.querySelectorAll(".sidebar-link");
+
+        links.forEach(link => {
+            link.addEventListener("mouseenter", () => {
+                if (logo.classList.contains("active")) {
+                    logo.classList.add("hover-hidden");
+                }
+            });
+
+            link.addEventListener("mouseleave", () => {
+                logo.classList.remove("hover-hidden");
+            });
+        });
+    }
+
+    function initializeSidebar() {
+        initSidebarHoverLogic();
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(initializeSidebar, 50);
+        });
+    } else {
+        setTimeout(initializeSidebar, 50);
+    }
+})();
+</script>

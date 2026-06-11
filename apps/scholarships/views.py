@@ -56,6 +56,10 @@ def scholarship_detail(request, pk):
         'already_applied': already_applied,
     })
 
+@login_required
+def saved_list(request):
+    """Student: view saved scholarships (UI placeholder, not yet persisted)."""
+    return render(request, 'scholarships/saved.html')
 
 # ---------- Admin Views ----------
 

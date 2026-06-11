@@ -5,25 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schola Admin - {% if scholarship %}Edit{% else %}Create{% endif %} Scholarship</title>
+    
     <link rel="stylesheet" href="{% static 'css/variables.css' %}">
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
     <link rel="stylesheet" href="{% static 'admin_css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'admin_css/addEdit.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    
     <style>
-        .form-card { background:#fff;border-radius:16px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,0.06);max-width:800px;margin:32px auto; }
-        .form-field { margin-bottom:20px; }
-        .form-field label { display:block;font-weight:600;margin-bottom:6px;color:#2F3A55;font-size:0.875rem; }
-        .form-field input, .form-field select, .form-field textarea { width:100%;padding:10px 14px;border:1px solid #CBD5E1;border-radius:8px;font-size:0.9rem;color:#2F3A55;box-sizing:border-box; }
-        .form-field textarea { min-height:100px;resize:vertical; }
-        .btn-submit { background:#5897FF;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.9rem; }
-        .btn-cancel { background:#F1F5F9;color:#64748B;border:none;padding:12px 28px;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.9rem;margin-left:12px;text-decoration:none;display:inline-block; }
-        .page-title { font-size:1.75rem;font-weight:700;color:#2F3A55;margin-bottom:4px; }
-        .page-subtitle { color:#64748B;margin-bottom:32px; }
+        .form-textarea {
+            width: 100%;
+            min-height: 140px;
+            padding: 14px;
+            border: 1px solid #CBD5E1;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #2F3A55;
+            box-sizing: border-box;
+            resize: vertical;
+            font-family: inherit;
+        }
+        .form-textarea:focus, .form-group input:focus, .select-custom-wrapper select:focus {
+            outline: none;
+            border-color: var(--color-blue-primary);
+            box-shadow: 0 0 0 3px rgba(88, 151, 255, 0.15);
+        }
     </style>
 </head>
 <body>
+
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <button class="sidebar-close" id="sidebarClose">
@@ -37,7 +49,7 @@
                 </a>
             </div>
             <nav class="sidebar-nav">
-                <a href="{% url 'scholarships:admin_list' %}" class="sidebar-link">Scholarship Management</a>
+                <a href="{% url 'scholarships:admin_list' %}" class="sidebar-link active">Scholarship Management</a>
                 <a href="{% url 'applications:admin_list' %}" class="sidebar-link">Applicants</a>
                 <a href="{% url 'users:profile' %}" class="sidebar-link">Profile</a>
             </nav>
@@ -52,66 +64,146 @@
                     <img src="{% static 'assets/logo_admin.png' %}" alt="Schola Admin Logo">
                 </a>
             </div>
+            <div class="nav-right">
+                <button class="nav-icon-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></button>
+                <button class="nav-icon-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></button>
+            </div>
         </div>
     </nav>
 
-    <div style="max-width:900px;margin:0 auto;padding:32px 24px;">
-        <h1 class="page-title">{% if scholarship %}Edit Scholarship{% else %}Create New Scholarship{% endif %}</h1>
-        <p class="page-subtitle">{% if scholarship %}Update the scholarship details below.{% else %}Fill in the details to add a new scholarship.{% endif %}</p>
+    <form method="post" class="form-main-content reveal-load">
+        {% csrf_token %}
+        
+        <div class="form-header-row">
+            <div class="header-titles">
+                <h1>{% if scholarship %}Edit Scholarship{% else %}Create New Scholarship{% endif %}</h1>
+                <p>{% if scholarship %}Update the details of this existing program.{% else %}Enter the details to publish a new academic opportunity for prospective students.{% endif %}</p>
+            </div>
+            <div class="header-actions">
+                <a href="{% url 'scholarships:admin_list' %}" class="btn-secondary btn-pop-interaction" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">Cancel</a>
+                <button type="submit" class="btn-primary btn-pop-interaction">{% if scholarship %}Save Changes{% else %}Save Scholarship{% endif %}</button>
+            </div>
+        </div>
 
         {% if form.errors %}
-        <div style="background:#fee2e2;color:#991b1b;padding:12px 16px;border-radius:8px;margin-bottom:20px;">
-            {% for field in form %}{% for error in field.errors %}<div>{{ field.label }}: {{ error }}</div>{% endfor %}{% endfor %}
+        <div style="background:#fee2e2;color:#991b1b;padding:16px 20px;border-radius:12px;margin-bottom:24px;border: 1px solid #fca5a5;">
+            <strong style="display:block; margin-bottom:8px;">Please correct the following errors:</strong>
+            <ul style="margin: 0; padding-left: 20px;">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
         </div>
         {% endif %}
 
-        <div class="form-card">
-            <form method="post">
-                {% csrf_token %}
-                <div class="form-field">
-                    <label>Scholarship Name</label>
-                    <input type="text" name="name" value="{{ form.name.value|default:'' }}" required>
+        <div class="form-cards-stack">
+            
+            <div class="content-card reveal-on-scroll">
+                <h2 class="form-section-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg> Basic Information</h2>
+                <div class="form-grid-layout">
+                    <div class="form-group full-width">
+                        <label>Scholarship Title</label>
+                        <input type="text" name="name" value="{{ form.name.value|default:'' }}" placeholder="e.g. Global Leadership Excellence Award" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Provider Entity</label>
+                        <input type="text" name="provider" value="{{ form.provider.value|default:'' }}" placeholder="e.g. Schola Foundation" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Country of Study</label>
+                        <input type="text" name="country" value="{{ form.country.value|default:'' }}" placeholder="e.g. United Kingdom" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Academic Level</label>
+                        <div class="select-custom-wrapper">
+                            <select name="level">
+                                <option value="s1" {% if form.level.value == 's1' %}selected{% endif %}>S1 (Undergraduate)</option>
+                                <option value="s2" {% if form.level.value == 's2' %}selected{% endif %}>S2 (Master)</option>
+                                <option value="s3" {% if form.level.value == 's3' %}selected{% endif %}>S3 (Doctoral)</option>
+                            </select>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="select-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Application Deadline</label>
+                        <input type="date" name="deadline" value="{{ form.deadline.value|date:'Y-m-d'|default:'' }}" required>
+                    </div>
                 </div>
-                <div class="form-field">
-                    <label>Provider</label>
-                    <input type="text" name="provider" value="{{ form.provider.value|default:'' }}" required>
+            </div>
+
+            <div class="content-card reveal-on-scroll">
+                <h2 class="form-section-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> Program Specifics</h2>
+                
+                <div class="form-group full-width" style="margin-bottom: 24px;">
+                    <label>Eligibility Requirements</label>
+                    <textarea name="requirements" class="form-textarea" placeholder="List the core academic, background, or documentation requirements here...">{{ form.requirements.value|default:'' }}</textarea>
                 </div>
-                <div class="form-field">
-                    <label>Deadline</label>
-                    <input type="date" name="deadline" value="{{ form.deadline.value|default:'' }}" required>
+
+                <div class="form-group full-width">
+                    <label>Award Benefits</label>
+                    <textarea name="benefits" class="form-textarea" placeholder="Describe the financial coverage, allowances, or networking benefits...">{{ form.benefits.value|default:'' }}</textarea>
                 </div>
-                <div class="form-field">
-                    <label>Country</label>
-                    <input type="text" name="country" value="{{ form.country.value|default:'' }}" required>
-                </div>
-                <div class="form-field">
-                    <label>Academic Level</label>
-                    <select name="level">
-                        <option value="s1" {% if form.level.value == 's1' %}selected{% endif %}>S1 (Undergraduate)</option>
-                        <option value="s2" {% if form.level.value == 's2' %}selected{% endif %}>S2 (Master)</option>
-                        <option value="s3" {% if form.level.value == 's3' %}selected{% endif %}>S3 (Doctoral)</option>
-                    </select>
-                </div>
-                <div class="form-field">
-                    <label>Requirements</label>
-                    <textarea name="requirements">{{ form.requirements.value|default:'' }}</textarea>
-                </div>
-                <div class="form-field">
-                    <label>Benefits</label>
-                    <textarea name="benefits">{{ form.benefits.value|default:'' }}</textarea>
-                </div>
-                <div style="margin-top:24px;">
-                    <button type="submit" class="btn-submit">{% if scholarship %}Save Changes{% else %}Create Scholarship{% endif %}</button>
-                    <a href="{% url 'scholarships:admin_list' %}" class="btn-cancel">Cancel</a>
-                </div>
-            </form>
+            </div>
+
         </div>
-    </div>
+
+        <div class="form-sticky-bottom-save-bar reveal-on-scroll">
+            <span class="auto-save-timestamp-text">
+                {% if scholarship %}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Editing Existing Record
+                {% else %}
+                    Draft Mode Active
+                {% endif %}
+            </span>
+            <div class="bottom-actions-group">
+                <a href="{% url 'scholarships:admin_list' %}" class="btn-secondary btn-pop-interaction" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">Cancel</a>
+                <button type="submit" class="btn-primary-dark btn-pop-interaction">{% if scholarship %}Save Changes{% else %}Save & Publish Scholarship{% endif %}</button>
+            </div>
+        </div>
+
+    </form>
+
+    <footer class="footer" style="width: 100vw; background-color: #FFFFFF; border-top: 1px solid #E2E8F0; position: relative; margin-top: 80px; left: 50%; transform: translateX(-50%); box-sizing: border-box;">
+        <div class="footer-container" style="max-width: var(--container-max-width, 1200px); margin: 0 auto; padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; width: 100%;">
+            <div class="footer-left">
+                <span class="copyright" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B;">© {% now "Y" %} Schola Scholarship Management. Empowering academic excellence.</span>
+            </div>
+            <div class="footer-right" style="display: flex; gap: 24px;">
+                <a href="#" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Privacy Policy</a>
+                <a href="#" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Terms of Service</a>
+                <a href="#" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Contact Support</a>
+            </div>
+        </div>
+    </footer>
 
     <script>
+        
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal-load').forEach(el => el.classList.add('revealed'));
+        });
+
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('revealed'); });
+        }, { root: null, threshold: 0.05 });
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => scrollObserver.observe(el));
+
         (function() {
-            const sidebar = document.getElementById("sidebar"), overlay = document.getElementById("sidebarOverlay"), toggleBtn = document.getElementById("sidebarToggle"), closeBtn = document.getElementById("sidebarClose");
-            function toggle() { sidebar.classList.toggle("active"); overlay.classList.toggle("active"); }
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("sidebarOverlay");
+            const toggleBtn = document.getElementById("sidebarToggle");
+            const closeBtn = document.getElementById("sidebarClose");
+            
+            function toggle() { 
+                sidebar.classList.toggle("active"); 
+                overlay.classList.toggle("active"); 
+            }
+            
             if (toggleBtn) toggleBtn.addEventListener("click", toggle);
             if (closeBtn) closeBtn.addEventListener("click", toggle);
             if (overlay) overlay.addEventListener("click", toggle);

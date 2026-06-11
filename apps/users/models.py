@@ -1,5 +1,11 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
+from django.core.validators import RegexValidator
+
+phone_validator = RegexValidator(
+    regex=r'^\d{10,15}$',
+    message='Phone number must contain 10-15 digits only.'
+)
 
 class UserManager(BaseUserManager):
     def create_user(self, email, name, password=None, **extra_fields):
@@ -23,7 +29,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     name     = models.CharField(max_length=150)
     email    = models.EmailField(unique=True)
-    phone    = models.CharField(max_length=20, blank=True)
+    phone    = models.CharField(max_length=20, blank=True, validators=[phone_validator])
     role     = models.CharField(max_length=10, choices=ROLE_CHOICES, default='student')
     is_active = models.BooleanField(default=True)
     is_staff  = models.BooleanField(default=False)

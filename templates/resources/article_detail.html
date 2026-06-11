@@ -1,10 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schola - Resource Detail</title>
-    {% load static %}
     <link rel="stylesheet" href="{% static 'css/variables.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
@@ -12,14 +12,14 @@
     <link rel="stylesheet" href="{% static 'css/myapp.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <style>
-        /* PERBAIKAN DI BAGIAN INI AGAR SINKRON DAN PRESISI */
+   
         .article-wrapper {
             display: block !important;
             width: 100%;
             max-width: var(--container-max-width);
             margin: 0 auto;
-            margin-top: 80px !important; /* Pendorong utama agar lolos dari fixed navbar */
-            padding: 60px 24px 80px 24px !important; /* Menggunakan total padding atas 60px (+80px margin = 140px total ruang bebas) */
+            margin-top: 80px !important; 
+            padding: 60px 24px 80px 24px !important; 
             min-height: calc(100vh - 250px);
             box-sizing: border-box;
         }
@@ -216,8 +216,8 @@
 </head>
 <body>
 
-    <div id="sidebar-placeholder"></div>
-    <div id="navbar-placeholder"></div>
+    {% include 'partials/student_sidebar.html' %}
+    {% include 'partials/student_navbar.html' %}
 
     <main class="article-wrapper reveal-load">
         <div class="back-btn-container">
@@ -252,71 +252,8 @@
         </article>
     </main>
 
-    <div id="footer-placeholder"></div>
+    {% include 'partials/student_footer.html' %}
 
-    <script>
-        function loadResourceDetailComponent(id, url) {
-            fetch(url)
-                .then(response => {
-                    if (!response.ok) throw new Error('HTTP failure: ' + response.status);
-                    return response.text();
-                })
-                .then(data => {
-                    document.getElementById(id).innerHTML = data;
-                    
-                    let verifyElementsExist = setInterval(() => {
-                        const iconButtons = document.querySelectorAll('.nav-icon-btn');
-                        const items = document.querySelectorAll('.nav-link, .sidebar-link, .logo, .navbar-brand, .logo-container a');
-                        
-                        if (iconButtons.length >= 2 && items.length > 0) {
-                            clearInterval(verifyElementsExist);
-
-                            iconButtons[0].setAttribute('onclick', "window.location.href='notifications.html'");
-                            iconButtons[1].setAttribute('onclick', "window.location.href='student_profile.html'");
-
-                            items.forEach(link => {
-                                const linkText = link.textContent.trim().toLowerCase();
-                                
-                                if (
-                                    link.innerHTML.includes('img') ||
-                                    link.classList.contains('logo') ||
-                                    link.classList.contains('sidebar-logo') ||
-                                    linkText === ''
-                                ) {
-                                    link.setAttribute('href', '../index.html');
-                                    link.classList.remove('active');
-                                }
-
-                                if (linkText.includes('resource')) {
-                                    link.setAttribute('href', 'student_resources.html');
-                                    link.classList.add('active');
-                                } else if (linkText.includes('scholarship')) {
-                                    link.setAttribute('href', '../index.html');
-                                    link.classList.remove('active');
-                                } else if (linkText.includes('application') || linkText.includes('my app')) {
-                                    link.setAttribute('href', 'student_myapplications.html');
-                                    link.classList.remove('active');
-                                } else if (linkText.includes('notification')) {
-                                    link.setAttribute('href', 'notifications.html');
-                                    link.classList.remove('active');
-                                } else if (linkText.includes('profile')) {
-                                    link.setAttribute('href', 'student_profile.html');
-                                    link.classList.remove('active');
-                                } else if (linkText.includes('saved')) {
-                                    link.setAttribute('href', 'student_saved.html');
-                                    link.classList.remove('active');
-                                }
-                            });
-                        }
-                    }, 30);
-                })
-                .catch(err => console.error(err));
-        }
-
-        loadResourceDetailComponent('sidebar-placeholder', 'student_sidebar.html');
-        loadResourceDetailComponent('navbar-placeholder', 'student_navbar.html');
-        loadResourceDetailComponent('footer-placeholder', 'student_footer.html');
-    </script>
     <script src="{% static 'js/navbar.js' %}"></script>
 
     <script>
@@ -408,7 +345,7 @@
                     <h3>Self-Evaluation is Crucial</h3>
                     <p>"In my early attempts, I realized my essays were too generic and lacked a strong personal brand strategy," David shares. He dedicated an entire month to re-aligning his portfolio framework.</p>
                     <h3>Words for Future Applicants</h3>
-                    <pNever treat application text fields as mere formalities. Every single prompt is a valuable opportunity to validate your true potential before the committee.</p>
+                    <p>Never treat application text fields as mere formalities. Every single prompt is a valuable opportunity to validate your true potential before the committee.</p>
                 `
             },
             webinars: {

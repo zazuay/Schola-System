@@ -15,8 +15,8 @@
 </head>
 <body>
 
-    <div id="sidebar-placeholder"></div>
-    <div id="navbar-placeholder"></div>
+    {% include 'partials/student_sidebar.html' %}
+    {% include 'partials/student_navbar.html' %}
 
     <section class="saved-hero reveal-load">
         <div class="saved-hero-container">
@@ -272,10 +272,10 @@
 
     </main>
 
-    <div id="footer-placeholder"></div>
+    {% include 'partials/student_footer.html' %}
 
     <script>
-        // Global functions untuk dipanggil langsung dari element HTML (menghindari masalah async load)
+       
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebarOverlay');
@@ -361,22 +361,19 @@
                 .catch(err => console.error(err));
         }
 
-        Promise.all([
-            loadComponent('sidebar-placeholder', 'student_sidebar.html'),
-            loadComponent('navbar-placeholder', 'student_navbar.html'),
-            loadComponent('footer-placeholder', 'student_footer.html')
-        ]).then(() => {
-            // Jika ada file navbar.js eksternal yang di-load belakangan
+        document.addEventListener('DOMContentLoaded', () => {
             const navScript = document.createElement('script');
-            navScript.src = "{% static 'js/navbar.js' %}"; 
+            navScript.src = "{% static 'js/navbar.js' %}";
             document.body.appendChild(navScript);
 
             document.querySelectorAll('.bookmark-toggle').forEach(button => {
                 button.addEventListener('click', function(e) {
                     e.preventDefault();
                     this.classList.toggle('active');
+
                     const icon = this.querySelector('svg');
-                    if(this.classList.contains('active')) {
+
+                    if (this.classList.contains('active')) {
                         icon.setAttribute('fill', 'currentColor');
                     } else {
                         icon.setAttribute('fill', 'none');
@@ -386,10 +383,13 @@
 
             document.querySelectorAll('.tag-btn').forEach(button => {
                 button.addEventListener('click', function() {
-                    document.querySelectorAll('.tag-btn').forEach(btn => btn.classList.remove('active'));
+                    document.querySelectorAll('.tag-btn')
+                        .forEach(btn => btn.classList.remove('active'));
+
                     this.classList.add('active');
                 });
             });
+
         });
 
         const scrollObserver = new IntersectionObserver((entries, observer) => {

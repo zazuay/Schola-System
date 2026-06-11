@@ -72,7 +72,9 @@
                     </span>
                     
                     <h1 class="detail-main-title">{{ scholarship.name }}</h1>
-                    <p class="detail-main-desc">{{ scholarship.benefits|truncatechars:200 }}</p>
+                    <p class="detail-main-desc">
+                        {{ scholarship.description }}
+                    </p>
                     
                     <div class="detail-image-wrapper">
                         <img src="{% static 'assets/scholarshipdetail.png' %}" alt="{{ scholarship.name }}">
@@ -83,9 +85,13 @@
                     <div class="sticky-info-card">
                         
                         <div class="info-row-block">
-                            <span class="info-label-title">Provider</span>
-                            <span class="info-amount-value">{{ scholarship.provider }}</span>
-                            <span class="info-sub-value">{{ scholarship.country }}</span>
+                            <span class="info-label-title">Scholarship Amount</span>
+                            <span class="info-amount-value">
+                                {{ scholarship.amount|default:"Fully Funded" }}
+                            </span>
+                            <span class="info-sub-value">
+                                {{ scholarship.country }}
+                            </span>
                         </div>
                         
                         <div class="info-row-block">
@@ -154,7 +160,11 @@
                             <h3>Requirements</h3>
                         </div>
                         <div class="feature-list" style="padding-left: 20px; line-height: 1.6; color: #475569;">
-                            {{ scholarship.requirements|linebreaks }}
+                            <ul class="feature-list">
+                                {% for requirement in requirements %}
+                                    <li>{{ requirement }}</li>
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
 
@@ -164,7 +174,11 @@
                             <h3>Benefits</h3>
                         </div>
                         <div class="feature-list" style="padding-left: 20px; line-height: 1.6; color: #475569;">
-                            {{ scholarship.benefits|linebreaks }}
+                            <ul class="feature-list">
+                                {% for benefit in benefits %}
+                                    <li>{{ benefit }}</li>
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
 
@@ -205,66 +219,65 @@
                         </div>
                     </div>
                 </section>
-
+                
                 <section class="recommendations-block-section reveal-on-scroll">
                     <h2 class="block-section-title">You May Also Like</h2>
-                    <div class="recommendations-grid">
-                        
-                        <div class="card-scholarship">
-                            <div class="card-top-row">
-                                <span class="tag-category">STEM</span>
-                                <button class="btn-bookmark bookmark-toggle">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-                                </button>
-                            </div>
-                            <h3 class="card-title">STEM Innovation Award</h3>
-                            <div class="card-meta-group">
-                                <span class="meta-item">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <circle cx="12" cy="12" r="10"></circle>
-                                        <path d="M2 12h20"></path>
-                                        <path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"></path>
-                                    </svg> United States
-                                </span>
-                                <span class="meta-item">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line></svg>
-                                    Nov 30, 2026
-                                </span>
-                            </div>
-                            <p class="rec-desc-dash">Supporting the next generation of engineers and scientists at top US institutions...</p>
-                            <div class="card-footer-row">
-                                <span class="card-amount">Rp40.000.000 / Year</span>
-                                <a href="{% url 'scholarships:list' %}" class="btn-detail">Explore Options</a>
-                            </div>
-                        </div>
 
+                    <div class="recommendations-grid">
+
+                        {% for rec in recommendations %}
                         <div class="card-scholarship">
+
                             <div class="card-top-row">
-                                <span class="tag-category">UNDERGRADUATE</span>
+                                <span class="tag-category">
+                                    {{ rec.level|upper }}
+                                </span>
+
                                 <button class="btn-bookmark bookmark-toggle">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                                    <svg width="18" height="18" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                    </svg>
                                 </button>
                             </div>
-                            <h3 class="card-title">Maple Leaf Academic Fund</h3>
+
+                            <h3 class="card-title">
+                                {{ rec.name }}
+                            </h3>
+
                             <div class="card-meta-group">
+
                                 <span class="meta-item">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <circle cx="12" cy="12" r="10"></circle>
-                                        <path d="M2 12h20"></path>
-                                        <path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"></path>
-                                    </svg> Canada
+                                    {{ rec.country }}
                                 </span>
+
                                 <span class="meta-item">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line></svg>
-                                    Dec 05, 2026
+                                    {{ rec.deadline }}
                                 </span>
+
                             </div>
-                            <p class="rec-desc-dash">Designed for students exhibiting exceptional leadership potential in Canada...</p>
+
+                            <p class="rec-desc-dash">
+                                {{ rec.benefits|truncatechars:80 }}
+                            </p>
+
                             <div class="card-footer-row">
-                                <span class="card-amount">Full Tuition</span>
-                                <a href="{% url 'scholarships:list' %}" class="btn-detail">Explore Options</a>
+
+                                <span class="card-amount">
+                                    {{ rec.provider }}
+                                </span>
+
+                                <a href="{% url 'scholarships:detail' rec.pk %}"
+                                class="btn-detail">
+                                    View Detail
+                                </a>
+
                             </div>
+
                         </div>
+                        {% empty %}
+                        <p>No similar scholarships available.</p>
+                        {% endfor %}
 
                     </div>
                 </section>

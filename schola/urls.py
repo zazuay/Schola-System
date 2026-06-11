@@ -10,6 +10,7 @@ urlpatterns = [
     path('auth/', include('apps.users.urls', namespace='users')),
     path('scholarships/', include('apps.scholarships.urls', namespace='scholarships')),
     path('applications/', include('apps.applications.urls', namespace='applications')),
+    path('resources/', include('apps.resources.urls', namespace='resources')),
 ]
 
 if settings.DEBUG:
