@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.db import IntegrityError, transaction
 import datetime # Added for the mock notification logic
 
-from .models import Application, Document
+from .models import Application, Document, Notification
 from .forms import ApplicationForm, DocumentForm
 from apps.scholarships.models import Scholarship
 from apps.utils.decorators import student_required, admin_required
@@ -20,6 +20,13 @@ def apply_view(request, scholarship_pk):
                 Application.objects.create(
                     user=request.user,
                     scholarship=scholarship
+                )
+
+                Notification.objects.create(
+                    user=request.user,
+                    type='success',
+                    title='Application Submitted',
+                    message=f'Your application for {scholarship.name} has been submitted.'
                 )
 
             messages.success(request, 'Application submitted!')
@@ -53,25 +60,26 @@ def upload_view(request, application_pk):
     )
 
     if request.method == 'POST' and form.is_valid():
-        doc = form.save(commit=False)
-        doc.application = application
-        doc.file_size = form.cleaned_data['file'].size
-        doc.save()
+        try:
+            doc = form.save(commit=False)
+            doc.application = application
+            doc.save()
 
-        messages.success(request, 'Document uploaded.')
+            messages.success(
+                request,
+                'Document uploaded successfully.'
+            )
 
-        return redirect(
-            'applications:upload',
-            application_pk=application.pk
-        )
+            return redirect(
+                'applications:upload',
+                application_pk=application.pk
+            )
 
-    documents = application.documents.all()
-
-    return render(request, 'applications/upload.html', {
-        'form': form,
-        'application': application,
-        'documents': documents,
-    })
+        except IntegrityError:
+            messages.error(
+                request,
+                'You already uploaded this document type.'
+            )
 
 
 @student_required
@@ -90,39 +98,23 @@ def status_view(request):
 # --- NEW VIEW ADDED HERE ---
 @student_required
 def notifications_view(request):
-    """Student: view notifications regarding their applications."""
-    # This is mock data mimicking the structure the template expects.
-    # In the future, query a Notification model here instead.
-    user_notifications = [
+    notifications = request.user.notifications.all()
+
+    return render(
+        request,
+        'applications/notifications.html',
         {
-            'is_read': False,
-            'type': 'document',
-            'message': 'Your document submission for <span class="notif-highlight">International Excellence Grant</span> has been verified.',
-            'created_at': datetime.datetime.now() - datetime.timedelta(minutes=10),
-            'action_url': '/applications/status/', # Or generate via reverse()
-            'action_text': 'Track Progress'
-        },
-        {
-            'is_read': True,
-            'type': 'success',
-            'message': 'Congratulations! You have passed the interview stage for the <span class="notif-highlight">STEM Innovation Award</span>.',
-            'created_at': datetime.datetime.now() - datetime.timedelta(hours=2),
-            'action_url': '',
-            'action_text': ''
+            'notifications': notifications
         }
-    ]
-    
-    return render(request, 'applications/notifications.html', {
-        'notifications': user_notifications
-    })
+    )
 
 @student_required
 def mark_all_read_view(request):
     """Student: Mark all notifications as read (Dummy endpoint for now)"""
     if request.method == 'POST':
-        # In the future, you will run a database query here to mark them read
-        # e.g., Notification.objects.filter(user=request.user).update(is_read=True)
-        pass
+        request.user.notificatiions.update(
+            is_read = True
+        )
     
     return redirect('applications:notifications')
 
@@ -137,6 +129,9 @@ def applicant_list(request):
     applications = (
         Application.objects
         .select_related('user', 'scholarship')
+        .filter(
+            scholarship__created_by=request.user
+        )
         .order_by('-date_submitted')
     )
 
@@ -151,7 +146,7 @@ def applicant_list(request):
 @admin_required
 def applicant_detail(request, pk):
     """Admin: view detail of one application including uploaded docs."""
-    application = get_object_or_404(Application, pk=pk)
+    application = get_object_or_404(Application, pk=pk, scholarship__created_by=request.user)
 
     return render(
         request,
@@ -163,7 +158,7 @@ def applicant_detail(request, pk):
 @admin_required
 def update_status_view(request, pk):
     """Admin: update application status (accept/reject)."""
-    application = get_object_or_404(Application, pk=pk)
+    application = get_object_or_404(Application, pk=pk, scholarship__created_by=request.user)
 
     if request.method == 'POST':
         new_status = request.POST.get('status')

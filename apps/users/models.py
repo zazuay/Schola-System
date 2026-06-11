@@ -25,10 +25,13 @@ class UserManager(BaseUserManager):
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    ROLE_CHOICES = [('student', 'Student'), ('admin', 'Admin')]
+    STUDENT = 'student'
+    ADMIN = 'admin'
+
+    ROLE_CHOICES = [(STUDENT, 'Student'), (ADMIN, 'Admin')]
 
     name     = models.CharField(max_length=150)
-    email    = models.EmailField(unique=True)
+    email    = models.EmailField(unique=True, db_index=True)
     phone    = models.CharField(max_length=20, blank=True, validators=[phone_validator])
     role     = models.CharField(max_length=10, choices=ROLE_CHOICES, default='student')
     is_active = models.BooleanField(default=True)
@@ -42,4 +45,9 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     def __str__(self):
-        return f"{self.name} ({self.role})"
+        return f"{self.name} - ({self.role})"
+    
+
+@property
+def full_name(self):
+    return self.name

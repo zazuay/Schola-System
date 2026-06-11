@@ -2,10 +2,21 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 import re
 from .models import CustomUser
+from django.contrib.auth.password_validation import validate_password
 
 class RegisterForm(forms.ModelForm):
-    password  = forms.CharField(widget=forms.PasswordInput)
-    password2 = forms.CharField(widget=forms.PasswordInput, label='Confirm Password')
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'autocomplete': 'new-password'
+        })
+    )
+
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'autocomplete': 'new-password'
+        }),
+        label='Confirm Password'
+    )
 
     class Meta:
         model  = CustomUser
@@ -14,12 +25,33 @@ class RegisterForm(forms.ModelForm):
     def clean_phone(self):
         phone = self.cleaned_data.get('phone')
 
-        if not re.fullmatch(r'^\d{10,15}$', phone):
+        if phone and not re.fullmatch(r'^\d{10,15}$', phone):
             raise forms.ValidationError(
                 "Phone number must contain 10-15 digits."
             )
 
         return phone
+    
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+
+        if CustomUser.objects.filter(email=email).exists():
+            raise forms.ValidationError(
+                "An account with this email already exists."
+            )
+
+        return email
+    
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+
+        if len(password) < 8:
+            raise forms.ValidationError(
+                "Password must be at least 8 characters."
+            )
+        validate_password(password)
+        
+        return password
     
     def clean(self):
         cleaned = super().clean()

@@ -9,8 +9,17 @@ def student_required(view_func):
     def wrapper(request, *args, **kwargs):
         if not request.user.is_authenticated:
             return redirect('users:login')
-        if request.user.role != 'student':
-            messages.error(request, 'Access denied: students only.')
+        if request.user.role != request.user.STUDENT:
+            messages.error(
+                request,
+                'Access denied.'
+            )
+            return redirect('users:profile')
+        if not request.user.is_active:
+            messages.error(
+                request,
+                'Account disabled.'
+            )
             return redirect('users:login')
         return view_func(request, *args, **kwargs)
     return wrapper
@@ -22,8 +31,18 @@ def admin_required(view_func):
     def wrapper(request, *args, **kwargs):
         if not request.user.is_authenticated:
             return redirect('users:login')
-        if request.user.role != 'admin':
-            messages.error(request, 'Access denied: admins only.')
+        if request.user.role != request.user.ADMIN:
+            messages.error(
+                request,
+                'Access denied.'
+            )
+
+            return redirect('users:profile')
+        if not request.user.is_active:
+            messages.error(
+                request,
+                'Account disabled.'
+            )
             return redirect('users:login')
         return view_func(request, *args, **kwargs)
     return wrapper
