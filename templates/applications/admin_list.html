@@ -133,7 +133,7 @@
                         <option value="rejected">Rejected</option>
                     </select>
                 </div>
-                <button class="tool-filter-btn btn-pop-interaction" onclick="window.location.href='{% url 'applications:upload' %}'">
+                <button class="tool-filter-btn btn-pop-interaction" onclick="alert('CSV export not implemented yet')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                     Export CSV
                 </button>
@@ -182,7 +182,7 @@
                                 {% endif %}
                             </td>
                             <td style="text-align: center;">
-                                <button class="btn-view-detail btn-pop-interaction" onclick="window.location.href='{% url 'applications:upload' applicant.id %}'">View Detail</button>
+                                <button class="btn-view-detail btn-pop-interaction" onclick="alert('View Detail')">View Detail</button>
                             </td>
                         </tr>
                         {% empty %}
@@ -217,7 +217,7 @@
         <div class="content-card app-recent-activity-section reveal-on-scroll">
             <div class="activity-header">
                 <h2 class="card-main-title">Recent Activity</h2>
-                <a href="{% url 'admin_activity_log' %}" class="view-all-link btn-pop-interaction">View All</a>
+                <a href="{% url 'applications:admin_list' %}" class="view-all-link btn-pop-interaction">View All</a>
             </div>
             <div class="activity-timeline-stack">
                 {% for activity in recent_activities %}
@@ -280,7 +280,7 @@
                     <p>You're all caught up!</p>
                     {% endfor %}
                 </div>
-                <button class="btn-view-all-tasks btn-pop-interaction" onclick="window.location.href='{% url 'admin_tasks' %}'">
+                <button class="btn-view-all-tasks btn-pop-interaction" onclick="alert('You are all caught up!')">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg> View All Tasks
                 </button>
             </div>
@@ -309,10 +309,10 @@
                 <span class="copyright" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B;">© {% now "Y" %} Schola Scholarship Management. Empowering academic excellence.</span>
             </div>
             <div class="footer-right" style="display: flex; gap: 24px;">
-                <a href="{% url 'privacy_policy' %}" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Privacy Policy</a>
-                <a href="{% url 'terms_of_service' %}" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Terms of Service</a>
-                <a href="{% url 'contact_support' %}" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Contact Support</a>
-                <a href="{% url 'accessibility' %}" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Accessibility</a>
+                <a href="#" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Privacy Policy</a>
+                <a href="#" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Terms of Service</a>
+                <a href="#" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Contact Support</a>
+                <a href="#" class="footer-link" style="font-size: var(--font-size-tag, 0.75rem); color: #64748B; text-decoration: none; font-weight: 600;">Accessibility</a>
             </div>
         </div>
     </footer>
